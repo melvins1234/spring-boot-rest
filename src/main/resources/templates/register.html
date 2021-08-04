@@ -15,8 +15,22 @@
 </head>
 
 <body>
+  <!-- Modal Here -->
+  <section id="modal" class="modal successful-registered" aria-hidden="true">
+    <section class="successful-registered__box">
+      <article class="successful-registered__content">
+        <span class="successful-registered__icon"><i class="fas fa-check"></i></span>
+        <h3 class="modal__title successful-registered__title">Awesome!</h3>
+        <p class="modal__description successful-registered__description">Your account has successfully registered. Check
+          your email for details</p>
+        <footer class="successful-registered__footer">
+          <button class="successful-registered__success" data-dismiss="modal">OK</button>
+        </footer>
+      </article>
+    </section>
+  </section>
 
-  <section class='sign-up sign-in'>
+  <section class='sign-up'>
     <section class="sign-up__wrapper wrapper">
       <section class="sign-up__description">
         <h1 class="sign-up__company-name"><a th:href="@{/}">RAKU<span
@@ -25,39 +39,36 @@
       </section>
       <section class="sign-up__section">
         <header class="sign-up__header">
-          <h2 class="sign-up__header--title sign-in__header--title">Sign In</h2>
-          <a href="javascript:;" class="sign-in__btn sign-in__btn--apple"><i class="fab fa-apple"></i>Sign In With
-            Apple</a>
-          <a href="javascript:;" class="sign-in__btn sign-in__btn--facebook"><i class="fab fa-facebook-square"></i>Sign
-            In With Facebook</a>
+          <h2 class="sign-up__header--title">Sign Up</h2>
+          <span class="sign-up__header--text">Already have an account? <a th:href="@{/signin}"
+              class="sign-up__header--link">Log in</a></span>
         </header>
-        <span class="sign-in__separate">OR</span>
         <section class="sign-up__form">
-          <form name="f" th:action="@{/login}" id="login-submit" method="post">
-          	<div th:if=${param.error}>
-          		Invalid username and password
-          	</div>
-          	<div th:if="${param.logout}">
-          		You have been logout
-          	</div>
+          <form id="signup-submit">
+            <!-- div class="sign-up__input-group">
+              <label for="fullName">Full Name</label>
+              <input type="text" name="fullName" id="fullName" required>
+            </div -->
             <div class="sign-up__input-group">
               <label for="email">Email</label>
-              <input type="text" name="username" id="email" required>
-              <span class="sign-up__invalid-feedback">This email address doesn't exist.</span>
+              <input type="email" name="username" id="email" required>
+              <span class="sign-up__invalid-feedback">Email address already in use.</span>
             </div>
             <div class="sign-up__input-group">
               <label for="password">Password</label>
               <input type="password" name="password" id="password" placeholder="Must be at least 6 characters" required>
               <i class="far fa-eye" id="togglePassword"></i>
             </div>
-            <button class="sign-up__button" type="submit">Sign In</button>
+            <div class="sign-up__input-group">
+              <input type="checkbox" name="signUp" id="signUp">
+              <label for="signUp" class="sign-up__chkbox-label">Sign up for email updates</label>
+            </div>
+            <button class="sign-up__button" type="submit">Sign Up</button>
           </form>
         </section>
         <footer class="sign-up__footer">
           <span class="sign-up__footer--text">By continuing, you agree to accept our Privacy Policy & Terms of
             Service.</span>
-          <span class="sign-up__footer--text sign-up__footer__create-acc">Don't have an account? <a
-              th:href="@{/register}">Create new account</a></span>
         </footer>
       </section>
     </section>

@@ -9,24 +9,29 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.rakutech.rakutech.model.Role;
 import com.rakutech.rakutech.model.User;
 import com.rakutech.rakutech.repository.UserRepository;
 
-public class UserDetailsServiceImpl implements UserDetailsService {
-  
-	@Autowired
-    private UserRepository userRepository;
+@Service
+public class UserDetailsServiceImpl implements UserDetailsService{
 	
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	@Autowired
+	private UserRepository userRepository;
+	
+    @Override
+    @Transactional(readOnly = true)
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByUsername(username);
 
-		User user = userRepository.findByUsername(username);
-		Set < GrantedAuthority > grantedAuthorities = new HashSet < > ();
-		grantedAuthorities.add(new SimpleGrantedAuthority("USER"));
-		grantedAuthorities.add(new SimpleGrantedAuthority("ADMIN"));
-		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
-	            grantedAuthorities);
-	}
+        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+        for (Role role : user.getRoles()){
+            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
+        }
 
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
+    }
 }
