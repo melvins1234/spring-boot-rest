@@ -1,92 +1,69 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-  <meta name="author" content="Creative Tim">
-  <title>Login</title>
-  <!-- Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-  <!-- Icons -->
-  <link rel="stylesheet" th:href="@{/css/nucleo.css}">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <!-- Argon CSS -->
-  <link rel="stylesheet" th:href="@{/css/argon.css}">
-
+  	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAKUTECH</title>
+	<link rel="stylesheet" th:href="@{/css/preset.css}">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	<link rel="stylesheet" th:href="@{/css/modal.css}">
+	<link rel="stylesheet" th:href="@{/css/sign-up.css}">
+	<link rel="stylesheet" th:href="@{/css/media.css}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
-<body class="bg-default">
-  <!-- Main content -->
-  <div class="main-content">
-    <!-- Header -->
-    <div class="header bg-gradient-primary py-7 py-lg-8 pt-lg-9">
-      <div class="separator separator-bottom separator-skew zindex-100">
-        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
-          xmlns="http://www.w3.org/2000/svg">
-          <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
-        </svg>
-      </div>
-    </div>
-    <!-- Page content -->
-    <div class="container mt--8 pb-5">
-      <div class="row justify-content-center">
-        <div class="col-lg-5 col-md-7">
-          <div class="card bg-secondary border-0 mb-0">
-            <div class="card-body px-lg-5 py-lg-5">
-              <form role="form">
-                <div class="form-group mb-3">
-                  <div class="input-group input-group-merge input-group-alternative">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="ni fas fa-user"></i></span>
-                    </div>
-                    <input class="form-control" placeholder="Username" type="text" name="username">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="input-group input-group-merge input-group-alternative">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                    </div>
-                    <input class="form-control" placeholder="Password" type="password" name="password">
-                  </div>
-                </div>
-                <div class="custom-control custom-control-alternative custom-checkbox">
-                  <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
-                  <label class="custom-control-label" for=" customCheckLogin">
-                    <span class="text-muted">Remember me</span>
-                  </label>
-                </div>
-                <div class="text-center">
-                  <button type="button" class="btn btn-primary my-4">Sign in</button>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-6">
-              <a href="#" class="text-light"><small>Forgot password?</small></a>
-            </div>
-            <div class="col-6 text-right">
-              <a href="#" class="text-light"><small>Create new account</small></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<body>
 
-  <!-- Argon Scripts -->
-  <!-- Core -->
-  <script th:src="@{/js/jquery.min.js}"></script>
-  <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-  <script th:src="@{/js/js.cookie.js}"></script>
-  <script th:src="@{/js/jquery.scrollbar.min.js}"></script>
-  <script th:src="@{/js/jquery-scrollLock.min.js}"></script>
-  <!-- Argon JS -->
-  <script th:src="@{/js/argon.js}"></script>
+  <section class='sign-up sign-in'>
+    <section class="sign-up__wrapper wrapper">
+      <section class="sign-up__description">
+        <h1 class="sign-up__company-name"><a th:href="@{/}">RAKU<span
+              class="sign-up__company-name--color">TECH</span></a></h1>
+        <p class="sign-up__company-desc">Browse from over 500 devices in your area.</p>
+      </section>
+      <section class="sign-up__section">
+        <header class="sign-up__header">
+          <h2 class="sign-up__header--title sign-in__header--title">Sign In</h2>
+          <a href="javascript:;" class="sign-in__btn sign-in__btn--apple"><i class="fab fa-apple"></i>Sign In With
+            Apple</a>
+          <a href="javascript:;" class="sign-in__btn sign-in__btn--facebook"><i class="fab fa-facebook-square"></i>Sign
+            In With Facebook</a>
+        </header>
+        <span class="sign-in__separate">OR</span>
+        <section class="sign-up__form">
+          <form name="f" th:action="@{/login}" id="login-submit" method="post">
+          	<div th:if=${param.error}>
+          		Invalid username and password
+          	</div>
+          	<div th:if="${param.logout}">
+          		You have been logout
+          	</div>
+            <div class="sign-up__input-group">
+              <label for="email">Email</label>
+              <input type="email" name="username" id="email" required>
+              <span class="sign-up__invalid-feedback">This email address doesn't exist.</span>
+            </div>
+            <div class="sign-up__input-group">
+              <label for="password">Password</label>
+              <input type="password" name="password" id="password" placeholder="Must be at least 6 characters" required>
+              <i class="far fa-eye" id="togglePassword"></i>
+            </div>
+            <button class="sign-up__button" type="submit">Sign In</button>
+          </form>
+        </section>
+        <footer class="sign-up__footer">
+          <span class="sign-up__footer--text">By continuing, you agree to accept our Privacy Policy & Terms of
+            Service.</span>
+          <span class="sign-up__footer--text sign-up__footer__create-acc">Don't have an account? <a
+              th:href="@{/signup}">Create new account</a></span>
+        </footer>
+      </section>
+    </section>
+  </section>
+
+  <script src="js/plugin.js"></script>
 </body>
 
 </html>
