@@ -1,9 +1,11 @@
 package com.rakutech.rakutech.repository;
 
-import org.springframework.data.jpa.repository.support.JpaRepositoryImplementation;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.rakutech.rakutech.model.User;
 
-public interface UserRepository extends JpaRepositoryImplementation<User, String> {
-	public User findByUsername(String username);
+public interface UserRepository extends JpaRepository<User, Long> {
+	Optional<User> findByUsername(String username);
 }

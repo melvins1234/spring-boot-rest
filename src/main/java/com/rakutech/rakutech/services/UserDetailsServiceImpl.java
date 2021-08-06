@@ -1,37 +1,25 @@
 package com.rakutech.rakutech.services;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.rakutech.rakutech.model.Role;
-import com.rakutech.rakutech.model.User;
-import com.rakutech.rakutech.repository.UserRepository;
+import com.rakutech.rakutech.model.Admin;
+import com.rakutech.rakutech.repository.AdminRepository;
 
-@Service
-public class UserDetailsServiceImpl implements UserDetailsService{
-	
+public class UserDetailsServiceImpl implements UserDetailsService {
+
 	@Autowired
-	private UserRepository userRepository;
+	AdminRepository adminRepository;
 	
-    @Override
-    @Transactional(readOnly = true)
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-
-        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        for (Role role : user.getRoles()){
-            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		Admin admin = adminRepository.getAdminByEmail(username);
+		if (admin == null) {
+            throw new UsernameNotFoundException("Could not find user");
         }
+		 return new MyUserDetails(admin);
+	}
 
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
-    }
 }
