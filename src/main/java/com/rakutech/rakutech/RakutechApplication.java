@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import com.rakutech.rakutech.repository.UserRepository;
 
 @SpringBootApplication
-@ComponentScan(basePackages = { "com.rakutech.rakutech"} )
+@ComponentScan(basePackages = {"com.rakutech.rakutech"} )
 public class RakutechApplication {
 
 	public static void main(String[] args) {
