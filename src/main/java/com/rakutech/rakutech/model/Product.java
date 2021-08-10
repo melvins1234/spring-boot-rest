@@ -1,17 +1,10 @@
 package com.rakutech.rakutech.model;
 
-import java.util.Date;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -25,18 +18,16 @@ public class Product {
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 	private String name;
+	@Column(name="price_regular")
 	private float price;
+	@Column(name="price_discounted")
+	private float discount;
 	private float weight;
 	private String description;
 	private String thumbnail;
 	private String image;
 	private int quantity;
-	private Date date_added;
-	
-	@OneToMany(cascade=CascadeType.ALL)
-    @JoinTable(name="product_categories", joinColumns={@JoinColumn(name="product_id", referencedColumnName="id")}
-    , inverseJoinColumns={@JoinColumn(name="category_id", referencedColumnName="id")})
-    private Set<Category> categories;
+//	private Date date_added;
 	
 	public Long getId() {
 		return id;
@@ -86,17 +77,17 @@ public class Product {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public Date getDate_added() {
-		return date_added;
+//	public Date getDate_added() {
+//		return date_added;
+//	}
+//	public void setDate_added(Date date_added) {
+//		this.date_added = date_added;
+//	}
+
+	public float getDiscount() {
+		return discount;
 	}
-	public void setDate_added(Date date_added) {
-		this.date_added = date_added;
+	public void setDiscount(float discount) {
+		this.discount = discount;
 	}
-	public Set<Category> getCategories() {
-		return categories;
-	}
-	public void setCategories(Set<Category> categories) {
-		this.categories = categories;
-	}
-	
 }
