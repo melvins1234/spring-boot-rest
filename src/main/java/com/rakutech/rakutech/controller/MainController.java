@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.view.RedirectView;
 
 import com.rakutech.rakutech.config.FileUploadUtil;
 import com.rakutech.rakutech.model.Category;
@@ -36,12 +35,12 @@ public class MainController {
            @RequestParam("image") MultipartFile multipartFile, HttpServletRequest request) throws IOException {
         
        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-       category.setThumbnail(fileName);      
+       category.setThumbnail("http://"+request.getLocalAddr()+":5000/api/images/"+fileName);      
        
        Category savedCategory = categoryRepository.save(category);
-       System.out.println(request.getLocalAddr());
 
-       String uploadDir = "images/" + savedCategory.getId();
+//       String uploadDir = "images/" + savedCategory.getId();
+       String uploadDir = "images/";
 
        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
         
