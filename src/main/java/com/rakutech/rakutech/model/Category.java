@@ -1,5 +1,6 @@
 package com.rakutech.rakutech.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,9 +12,10 @@ import javax.persistence.Table;
 public class Category {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private String name;
+	@Column(name="name")
+	private String categoryName;
 	private String description;
 	private String thumbnail;
 	
@@ -24,10 +26,10 @@ public class Category {
 		this.id = id;
 	}
 	public String getName() {
-		return name;
+		return categoryName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 	public String getDescription() {
 		return description;
@@ -40,6 +42,11 @@ public class Category {
 	}
 	public void setThumbnail(String thumbnail) {
 		this.thumbnail = thumbnail;
+	}
+	@Override
+	public String toString() {
+		return "Category [id=" + id + ", categoryName=" + categoryName + ", description=" + description + ", thumbnail=" + thumbnail
+				+ "]";
 	}
 
 }
