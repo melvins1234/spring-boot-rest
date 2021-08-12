@@ -1,0 +1,18 @@
+@mixin for-Ipad {
+  @media (max-width: 960px) {
+    @content;
+  }
+}
+
+.bottom3 {
+  @include for-Ipad() {
+    & > .wrapper {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    &__box {
+      width: 260px;
+    }
+  }
+}

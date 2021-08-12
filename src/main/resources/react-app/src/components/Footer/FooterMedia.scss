@@ -1,0 +1,137 @@
+@mixin for-desktop {
+  @media (max-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-landscape-desktop {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin for-Ipad {
+  @media (max-width: 960px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-portrait-up {
+  @media (max-width: 640px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-small {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin for-phone-ony {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+.footer {
+  @include for-desktop() {
+    &__top-outer-container,
+    &__middle,
+    &__bottom-outer-container {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+
+  @include for-tablet-landscape-desktop() {
+    &__top {
+      &--contact-us {
+        margin-right: 50px;
+      }
+    }
+  }
+
+  @media (max-width: 900px) {
+    &__top {
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+    }
+  }
+
+  @include for-tablet-portrait-up() {
+    &__bottom {
+      flex-direction: column;
+      text-align: center;
+
+      &--fund-transfers {
+        margin: 0 auto;
+      }
+    }
+  }
+
+  @media (max-width: 800px) {
+    &__middle {
+      flex-wrap: wrap;
+
+      &--site-map {
+        flex: 23%;
+      }
+    }
+  }
+
+  @media (max-width: 540px) {
+    &__middle {
+      &--site-map {
+        flex: 100%;
+        border-bottom: 2px solid #22262a;
+        cursor: pointer;
+      }
+
+      ul {
+        display: none;
+        padding: 0 0 20px 10px;
+      }
+    }
+
+    &__nav {
+      &--show {
+        display: block !important;
+      }
+    }
+
+    h5 {
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+
+      i {
+        display: block;
+        transition: transform 0.2s;
+      }
+    }
+
+    &__arrow {
+      h5 {
+        i {
+          transform: rotate(-180deg);
+        }
+      }
+    }
+  }
+
+  @include for-tablet-small() {
+    &__top {
+      flex-direction: column;
+      justify-content: center;
+
+      & > div {
+        margin: 0 auto;
+        text-align: center;
+
+        h5 {
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
