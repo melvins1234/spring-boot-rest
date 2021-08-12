@@ -1,33 +1,17 @@
-package com.rakutech.rakutech.model;
+package com.rakutech.rakutech.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "user")
-public class User {
+public class UserDTO {
 	
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String email;
-    private String password;
-    @Column(name="full_name")
-    private String fullName;
-    @Column(name="billing_address")
-    private String billingAddress;
-    @Column(name="default_shipping_address")
-    private String defaultShippingAddress;
-    @Column(name="secondary_shipping_address")
-    private String secondaryShippingAddress;
-    private String phone;
-    @Column(name="role")
-    private String roles;
-    
+	private Long id;
+	private String email;
+	private String password;
+	private String fullName;
+	private String billingAddress;
+	private String defaultShippingAddress;
+	private String secondaryShippingAddress;
+	private String phone;
+	private String roles; 
+	private String token;
 	public Long getId() {
 		return id;
 	}
@@ -82,6 +66,18 @@ public class User {
 	public void setRoles(String roles) {
 		this.roles = roles;
 	}
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
+	}
+	@Override
+	public String toString() {
+		return "UserDTO [id=" + id + ", email=" + email + ", password=" + password + ", fullName=" + fullName
+				+ ", billingAddress=" + billingAddress + ", defaultShippingAddress=" + defaultShippingAddress
+				+ ", secondaryShippingAddress=" + secondaryShippingAddress + ", phone=" + phone + ", roles=" + roles
+				+ ", token=" + token + "]";
+	}
 	
-
 }
