@@ -10,8 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.rakutech.rakutech.services.UserDetailsServiceImpl;
 
@@ -51,14 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/resources/**","/images/**","/css/**","/fonts/**","/js/**","/api/**").permitAll()
 		.antMatchers(HttpMethod.POST, "/api/products").permitAll()
 		.antMatchers(HttpMethod.POST, "/api/categories").permitAll()
-		.anyRequest().authenticated()
-		.and()
-		.formLogin()
-		.loginPage("/login")
-		.permitAll()
-		.and()
-        .logout()
-        .permitAll();
+		.anyRequest().authenticated();
 	}
     
 
