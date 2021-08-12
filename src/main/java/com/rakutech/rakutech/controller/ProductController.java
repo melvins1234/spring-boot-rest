@@ -21,7 +21,7 @@ import com.rakutech.rakutech.model.Product;
 import com.rakutech.rakutech.services.ProductService;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/api/products")
 public class ProductController {
 	
 	@Autowired
