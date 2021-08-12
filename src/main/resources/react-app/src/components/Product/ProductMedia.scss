@@ -1,0 +1,181 @@
+@mixin for-desktop {
+  @media (max-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-landscape-desktop {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin for-Ipad {
+  @media (max-width: 960px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-portrait-up {
+  @media (max-width: 640px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-small {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin for-phone-ony {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+.main {
+  & > .wrapper {
+    @include for-Ipad() {
+      flex-direction: column;
+      padding: 0 10px;
+    }
+  }
+
+  &__product {
+    @include for-desktop() {
+      &--info {
+        width: 725px;
+      }
+
+      &--image--big {
+        width: 330px;
+      }
+
+      &--thumbnail {
+        img {
+          width: 80px;
+          height: auto;
+        }
+      }
+
+      &--details {
+        width: 375px;
+      }
+    }
+
+    @include for-tablet-landscape-desktop() {
+      &--info {
+        width: 660px;
+      }
+
+      &--thumbnail {
+        img {
+          width: 68px;
+        }
+      }
+
+      &--details {
+        width: 305px;
+      }
+
+      &--social-media {
+        & a {
+          padding: 15px 16px;
+        }
+      }
+    }
+
+    @include for-Ipad() {
+      &--info,
+      &--upper {
+        width: 100%;
+      }
+
+      &--details {
+        width: auto;
+      }
+      &--image--big {
+        width: 290px;
+      }
+
+      &--thumbnail {
+        img {
+          width: 68px;
+        }
+      }
+
+      &--desc {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 800px) {
+      &--upper {
+        flex-direction: column;
+      }
+
+      &--image {
+        width: 285px;
+        margin: 0 auto 30px;
+      }
+
+      &--details {
+        width: 465px;
+        margin: 0 auto;
+        max-width: 100%;
+      }
+    }
+
+    @include for-tablet-portrait-up() {
+      &--tab {
+        &:nth-child(2) {
+          margin: 0 25px;
+        }
+      }
+    }
+
+    @include for-tablet-small() {
+      &--header {
+        flex-direction: column;
+      }
+
+      &--tab {
+        margin-bottom: 20px;
+        &:nth-child(2) {
+          margin: 0 0 20px;
+        }
+        &::after {
+          bottom: -10px;
+        }
+      }
+      &--lower {
+        hr {
+          margin: 10px 0 30px;
+        }
+      }
+
+      &--bottom {
+        flex-direction: column;
+      }
+
+      &--cart {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  &__side {
+    @include for-tablet-landscape-desktop() {
+      &--image {
+        top: unset !important;
+        right: unset !important;
+      }
+    }
+  }
+
+  &__best-seller {
+    @include for-Ipad() {
+      margin: 0 auto;
+    }
+  }
+}

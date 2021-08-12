@@ -1,0 +1,112 @@
+.header {
+  width: 100%;
+  font-weight: 600;
+
+  .wrapper {
+    flex-direction: column;
+  }
+
+  &__mobile {
+    @mixin displayNonePositionRelative {
+      display: none;
+      position: relative;
+    }
+    &--logo {
+      @include displayNonePositionRelative();
+    }
+    &--cart {
+      @include displayNonePositionRelative();
+      a {
+        color: #2e90e5;
+      }
+      span{
+        background-color: #2e90e5;
+      }
+    }
+
+    &--cart--badge {
+      font-size: 11px;
+      position: absolute;
+      top: -7px;
+      color: #fff;
+      background: #000;
+      border-radius: 50%;
+      padding: 0 5px;
+      right: -11px;
+      line-height: 15px;
+      height: 16px;
+      opacity: 1 !important;
+      display: none;
+    }
+  }
+
+  &__top {
+    display: flex;
+    padding: 10px 0 20px 0;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    &--right {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    &--account__container {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      width: 130px;
+      top: -8px;
+      padding: 0 10px;
+      text-align: right;
+    }
+
+    span {
+      margin: 10px;
+    }
+
+    &--user-profile {
+      padding: 0 !important;
+      font-weight: bold;
+      width: 130px;
+      text-align: right;
+      position: relative;
+    }
+
+    div {
+      padding: 10px;
+    }
+
+    &--cart {
+      a.active {
+        color: #33a0ff;
+      }
+      a:hover {
+        span {
+          color: #939191;
+        }
+      }
+      span {
+        color: #575757;
+      }
+    }
+  }
+
+  &--brand {
+    margin: 0 auto;
+    width: fit-content;
+    margin-bottom: 61px;
+
+    h1 {
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    span {
+      color: #fd2e2e;
+    }
+  }
+}

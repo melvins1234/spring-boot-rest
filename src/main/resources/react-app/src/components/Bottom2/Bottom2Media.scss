@@ -1,0 +1,93 @@
+@mixin for-desktop {
+  @media (max-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-landscape-desktop {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin for-Ipad {
+  @media (max-width: 960px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-portrait-up {
+  @media (max-width: 640px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-small {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin for-phone-ony {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+.bottom2 {
+  @include for-desktop() {
+    &__content {
+      margin-left: 20px;
+    }
+
+    &__image {
+      right: 0;
+    }
+  }
+
+  @include for-Ipad() {
+    &__image {
+      top: 0;
+      width: 400px;
+      right: -60px;
+    }
+
+    &__content {
+      width: 350px;
+    }
+
+    &__product {
+      font-size: 54px;
+    }
+
+    &__description {
+      font-size: 21px;
+    }
+  }
+
+  @include for-tablet-landscape-desktop() {
+    & > .wrapper {
+      height: auto;
+    }
+
+    &__image {
+      display: none;
+    }
+
+    &__content {
+      padding: 100px 20px;
+      width: 100%;
+    }
+  }
+
+  @include for-tablet-small() {
+    &__product {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    &__description {
+      font-size: 17px;
+      margin-bottom: 20px;
+    }
+  }
+}

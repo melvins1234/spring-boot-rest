@@ -1,0 +1,28 @@
+.product-listing {
+  &__products {
+    &__pagination {
+      background-color: #f6f7f8;
+      ol {
+        display: flex;
+        align-items: center;
+        width: fit-content;
+        margin: 0 auto;
+      }
+      li {
+        list-style: none;
+        font-size: 1.3em;
+        display: flex;
+        margin: 0 2px;
+        span {
+          font-weight: 600;
+          padding: 15px 20px;
+          cursor: pointer;
+        }
+        span.active, span:hover {
+          background-color: #000;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
