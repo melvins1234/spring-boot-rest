@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.rakutech.rakutech.services.UserDetailsServiceImpl;
 
@@ -45,7 +46,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable()
+		.addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
 		.authorizeRequests()
+		.antMatchers(HttpMethod.POST, "/auth").permitAll()
 		.antMatchers("/resources/**","/images/**","/css/**","/fonts/**","/js/**","/api/**").permitAll()
 		.antMatchers(HttpMethod.POST, "/api/products").permitAll()
 		.antMatchers(HttpMethod.POST, "/api/categories").permitAll()
