@@ -39,7 +39,6 @@ public class MainController {
        
        Category savedCategory = categoryRepository.save(category);
 
-//       String uploadDir = "images/" + savedCategory.getId();
        String uploadDir = "images/";
 
        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
