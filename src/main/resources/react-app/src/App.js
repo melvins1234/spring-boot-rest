@@ -20,25 +20,27 @@ import { Payment } from "./components/Payment/Payment";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import { loadProducts } from "./store/action/loadProducts";
 
+import Dashboard from "./components/pages/dashboard/Dashboard";
+
 const App = () => {
   const dispatch = useDispatch();
 
   const isModalClose = () =>
     !sessionStorage.getItem("isModalClose") ? true : false;
 
-  useEffect(() => {
-    fetch("/api/products", {
-      method: "GET",
-      headers: new Headers({
-        "Content-Type": "application/x-www-form-urlencoded",
-      }),
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        console.log(json);
-        dispatch(loadProducts(json));
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("/api/products", {
+  //     method: "GET",
+  //     headers: new Headers({
+  //       "Content-Type": "application/x-www-form-urlencoded",
+  //     }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((json) => {
+  //       console.log(json);
+  //       dispatch(loadProducts(json));
+  //     });
+  // }, []);
 
   let [showModal, setShowModal] = useState(isModalClose());
   return (
@@ -62,6 +64,9 @@ const App = () => {
           <Header key="Header" />,
         ]}
       />
+
+      <Route exact path={"/admin"} component= { () => <Dashboard/>}/>
+
       <Route
         exact
         path={[

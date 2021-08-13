@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+@font-face {
+    font-family: 'Acumin Pro';
+    src: url('../../../fonts/AcuminPro/AcuminPro-ExtraLightItalic.woff2') format('woff2'),
+        url('../../../fonts/AcuminPro/AcuminPro-ExtraLightItalic.woff') format('woff');
+    font-weight: 200;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acumin Pro';
+    src: url('../../../fonts/AcuminPro/AcuminPro-ExtraLight.woff2') format('woff2'),
+        url('../../../fonts/AcuminPro/AcuminPro-ExtraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acumin Pro';
+    src: url('../../../fonts/AcuminPro/AcuminPro-Regular.woff2') format('woff2'),
+        url('../../../fonts/AcuminPro/AcuminPro-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acumin Pro';
+    src: url('../../../fonts/AcuminPro/AcuminPro-LightItalic.woff2') format('woff2'),
+        url('../../../fonts/AcuminPro/AcuminPro-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acumin Pro';
+    src: url('../../../fonts/AcuminPro/AcuminPro-MediumItalic.woff2') format('woff2'),
+        url('../../../fonts/AcuminPro/AcuminPro-MediumItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acumin Pro';
+    src: url('../../../fonts/AcuminPro/AcuminPro-Light.woff2') format('woff2'),
+        url('../../../fonts/AcuminPro/AcuminPro-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acumin Pro';
+    src: url('../../../fonts/AcuminPro/AcuminPro-Medium.woff2') format('woff2'),
+        url('../../../fonts/AcuminPro/AcuminPro-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acumin Pro';
+    src: url('../../../fonts/AcuminPro/AcuminPro-Semibold.woff2') format('woff2'),
+        url('../../../fonts/AcuminPro/AcuminPro-Semibold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acumin Pro';
+    src: url('../../../fonts/AcuminPro/AcuminPro-SemiboldItalic.woff2') format('woff2'),
+        url('../../../fonts/AcuminPro/AcuminPro-SemiboldItalic.woff') format('woff');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acumin Pro';
+    src: url('../../../fonts/AcuminPro/AcuminPro-ThinItalic.woff2') format('woff2'),
+        url('../../../fonts/AcuminPro/AcuminPro-ThinItalic.woff') format('woff');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acumin Pro';
+    src: url('../../../fonts/AcuminPro/AcuminPro-UltraBlackItalic.woff2') format('woff2'),
+        url('../../../fonts/AcuminPro/AcuminPro-UltraBlackItalic.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acumin Pro';
+    src: url('../../../fonts/AcuminPro/AcuminPro-Thin.woff2') format('woff2'),
+        url('../../../fonts/AcuminPro/AcuminPro-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acumin Pro';
+    src: url('../../../fonts/AcuminPro/AcuminPro-UltraBlack.woff2') format('woff2'),
+        url('../../../fonts/AcuminPro/AcuminPro-UltraBlack.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acumin Pro';
+    src: url('../../../fonts/AcuminPro/AcuminPro-BlackItalic.woff2') format('woff2'),
+        url('../../../fonts/AcuminPro/AcuminPro-BlackItalic.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acumin Pro';
+    src: url('../../../fonts/AcuminPro/AcuminPro-BoldItalic.woff2') format('woff2'),
+        url('../../../fonts/AcuminPro/AcuminPro-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acumin Pro';
+    src: url('../../../fonts/AcuminPro/AcuminPro-Italic.woff2') format('woff2'),
+        url('../../../fonts/AcuminPro/AcuminPro-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acumin Pro';
+    src: url('../../../fonts/AcuminPro/AcuminPro-Black.woff2') format('woff2'),
+        url('../../../fonts/AcuminPro/AcuminPro-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acumin Pro';
+    src: url('../../../fonts/AcuminPro/AcuminPro-Bold.woff2') format('woff2'),
+        url('../../../fonts/AcuminPro/AcuminPro-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+html, div, body{
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font: normal normal normal 14px/17px 'Rajdhani', sans-serif;
+    color: #22262A;
+    overflow-x: hidden;
+}
+
+h1 {
+    font: normal normal bold 14px/17px Acumin Pro;
+}
