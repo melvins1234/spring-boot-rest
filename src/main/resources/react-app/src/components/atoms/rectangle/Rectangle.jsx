@@ -2,7 +2,7 @@ import './style.scss';
 
 const Rectangle = () => {
     return (
-        <span class="nav__header--rectangle">
+        <span className="nav__header--rectangle">
             P 47,000
         </span>
     )
