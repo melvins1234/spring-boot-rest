@@ -1,6 +1,6 @@
 import AddProduct from "../../atoms/buttons/Add Product/AddProduct";
 import Divider from "@material-ui/core/Divider";
-import ProductTable from "../../molecules/Tables/ProductTable";
+import ProductTable from "../../molecules/tables/ProductTable";
 
 import "./style.scss";
 

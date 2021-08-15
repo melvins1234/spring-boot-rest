@@ -8,7 +8,7 @@ const UploadBox = ({ setProductImages }) => {
   };
   return (
     <div className="product__upload--box">
-      <Upload /> Drag and drop or browse to choose a file.
+      <Upload /> Upload
       <input
         onChange={imageList}
         type="file"
