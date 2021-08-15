@@ -8,7 +8,9 @@ const Dashboard = () => {
   return (
     <div>
       <Header />
-      <Navbar />
+      <div className="main__content">
+        <Navbar />
+      </div>
     </div>
   );
 };

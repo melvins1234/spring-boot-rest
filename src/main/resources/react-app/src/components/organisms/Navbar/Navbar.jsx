@@ -12,7 +12,7 @@ import "./style.scss";
 
 const Navbar = () => {
   return (
-    <nav class="nav">
+    <nav className="nav">
       <ul>
         <li><NavHeader /> <Divider /></li>
         <li>
