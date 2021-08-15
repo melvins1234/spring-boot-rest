@@ -1,0 +1,8 @@
+@media (max-width: 480px) {
+  .bottom1__menu {
+    -ms-flex-preferred-size: 25%;
+        flex-basis: 25%;
+    margin-bottom: 15px;
+  }
+}
+/*# sourceMappingURL=BottomMedia.css.map */

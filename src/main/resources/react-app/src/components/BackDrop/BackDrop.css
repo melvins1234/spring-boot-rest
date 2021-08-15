@@ -1,0 +1,25 @@
+.fade {
+  -webkit-transition: opacity .15s linear;
+  transition: opacity .15s linear;
+}
+
+.successful-registered__backdrop {
+  z-index: 3;
+  background: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  visibility: hidden;
+}
+
+.successful-registered__backdrop--fade {
+  opacity: 0;
+}
+
+.successful-registered__backdrop--show {
+  opacity: 0.5;
+  visibility: visible;
+}
+/*# sourceMappingURL=BackDrop.css.map */

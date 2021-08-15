@@ -1,0 +1,40 @@
+.breadcrumbs {
+  background: #F6F7F8;
+  margin-bottom: 60px;
+}
+
+.breadcrumbs__nav {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  padding: 17px 0;
+  font-weight: 600;
+}
+
+.breadcrumbs__nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.breadcrumbs__tab {
+  list-style-type: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.breadcrumbs__tab a {
+  color: #33A0FF;
+}
+
+.breadcrumbs__tab:not(:last-child)::after {
+  content: '/';
+  padding: 0 10px;
+  color: #C1C8CE;
+}
+
+.breadcrumbs__tab--active a {
+  color: #22262A;
+}
+/*# sourceMappingURL=Breadcrumbs.css.map */

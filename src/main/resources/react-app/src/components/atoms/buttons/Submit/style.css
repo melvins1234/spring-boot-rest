@@ -1,0 +1,22 @@
+.product__submit {
+  width: 156px;
+  height: 48px;
+  background: #dc3545;
+  border-radius: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid #dc3545;
+  color: #fff;
+}
+
+.product__submit:hover {
+  background: #b4303d;
+}
+/*# sourceMappingURL=style.css.map */
