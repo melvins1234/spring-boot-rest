@@ -1,0 +1,16 @@
+.checkout__customer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.checkout__customer--information {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
+}
+
+.checkout__customer--order-sumary .bottom4__news__box img {
+  width: 50px;
+}
+/*# sourceMappingURL=Payment.css.map */

@@ -32,4 +32,19 @@ public class CategoryService {
         }
     }
 	
+	public List<Category> categoryList(){
+		return categoryRepository.findAll();
+	}
+	
+	public Category categoryByCategoryName(String name) {
+		return categoryRepository.findByCategoryName(name);
+	}
+	
+	public Category save(Category category) {
+		return categoryRepository.save(category);
+	}
+	
+	public void deleteCategory(Long id) {
+		categoryRepository.deleteById(id);
+	}
 }

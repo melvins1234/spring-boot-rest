@@ -1,0 +1,13 @@
+@media (max-width: 960px) {
+  .bottom3 > .wrapper {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .bottom3__box {
+    width: 260px;
+  }
+}
+/*# sourceMappingURL=Bottom3Media.css.map */
