@@ -22,13 +22,13 @@ public class Category {
 	private String name;
 	private String description;
 	
-	@ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                CascadeType.PERSIST,
-                CascadeType.MERGE
-            },
-            mappedBy = "categories")
-    private Set<Product> products = new HashSet<>();
+//	@ManyToMany(fetch = FetchType.LAZY,
+//            cascade = {
+//                CascadeType.PERSIST,
+//                CascadeType.MERGE
+//            },
+//            mappedBy = "categories")
+//    private Set<Product> products = new HashSet<>();
 
 	public long getId() {
 		return id;
@@ -54,13 +54,13 @@ public class Category {
 		this.description = description;
 	}
 
-	public Set<Product> getProducts() {
-		return products;
-	}
-
-	public void setProducts(Set<Product> products) {
-		this.products = products;
-	}
+//	public Set<Product> getProducts() {
+//		return products;
+//	}
+//
+//	public void setProducts(Set<Product> products) {
+//		this.products = products;
+//	}
 
 
 }

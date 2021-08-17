@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAgBE,MAAM,EAAE,SAAS,EAAE,KAAK;EAJ1B,AAAA,YAAY,CAAC;IAKT,UAAU,EAAE,KAAK;GAYpB;;;AAtBC,MAAM,EAAE,SAAS,EAAE,KAAK;EAK1B,AAAA,YAAY,CAAC;IAST,OAAO,EAAE,MAAM;GAQlB;EALM,AAAD,yBAAS,CAAC;IACR,KAAK,EAAE,KAAK;GACb",
-    "sources": [
-        "BreadcrumbsMedia.scss"
-    ],
-    "names": [],
-    "file": "BreadcrumbsMedia.css"
-}

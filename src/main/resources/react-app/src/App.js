@@ -23,6 +23,7 @@ import { loadProducts } from "./store/action/loadProducts";
 import Dashboard from "./components/pages/dashboard/Dashboard";
 import Products from "./components/pages/products/Products"
 import AddProductPage from "./components/pages/products/AddProductPage";
+import Categories from "./components/pages/category/Category"
 
 const App = () => {
   const dispatch = useDispatch();
@@ -70,6 +71,7 @@ const App = () => {
       <Route exact path={"/admin"} component= { () => <Dashboard/>}/>
       <Route exact path={"/products"} component= { () => <Products/>}/>
       <Route exact path={"/products/add-product"} component= { () => <AddProductPage/>}/>
+      <Route exact path={"/categories"} component= { () => <Categories/>}/>
 
       <Route
         exact

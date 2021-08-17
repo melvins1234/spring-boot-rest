@@ -1,7 +1,7 @@
 import './style.scss';
-const SaveProductButton = ({type, value}) => {
+const SaveProductButton = ({type, value, className}) => {
     return (
-        <button className="product__submit" type={type}>{value}</button>
+        <button className={`product__submit ${(className !== null) ? className : ' '}`} type={type}>{value}</button>
     )
 }
 
