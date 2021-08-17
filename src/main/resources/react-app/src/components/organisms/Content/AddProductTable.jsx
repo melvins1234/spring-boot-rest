@@ -1,4 +1,4 @@
-import AddProduct from "../../atoms/buttons/Add Product/AddProduct";
+import AddButton from "../../atoms/buttons/Add Product/AddButton";
 import Divider from "@material-ui/core/Divider";
 import ProductTable from "../../molecules/tables/ProductTable";
 
@@ -9,7 +9,7 @@ const AddProductTable = () => {
     <div className="product__main">
       <header className="product__main--header">
         <h3>Products</h3>
-        <AddProduct />
+        <AddButton value="Add Product" />
       </header>
       <Divider />
       <ProductTable />
