@@ -1,10 +1,13 @@
 import DasboardIcon from "../../atoms/icons/Dashboard Icon/Dashboard";
+import { NavLink } from "react-router-dom";
 
 const Dashboard = () => {
   return (
-    <a className="nav__tab">
-      <DasboardIcon /> Dashboard
-    </a>
+    <NavLink to="/dashboard">
+      <span className="nav__tab">
+        <DasboardIcon /> Dashboard
+      </span>
+    </NavLink>
   );
 };
 

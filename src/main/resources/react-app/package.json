@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@date-io/date-fns": "^2.11.0",
+    "@date-io/dayjs": "^2.11.0",
+    "@date-io/luxon": "^2.11.1",
+    "@date-io/moment": "^2.11.0",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
