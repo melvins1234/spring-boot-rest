@@ -1,7 +1,5 @@
-import { useEffect } from "react";
 import { DataGrid } from "@material-ui/data-grid";
-import { useSelector, useDispatch } from "react-redux";
-import {category} from '../../../store/action/category'
+import { useSelector } from "react-redux";
 
 const columns = [
   { field: "id", headerName: "ID", width: 90 },
@@ -16,13 +14,6 @@ const columns = [
 
 const CategoryListTable = () => {
   const rows = useSelector((state) => state.category);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    return fetch("api/categories")
-    .then((res) => res.json())
-    .then((json) => dispatch(category(json)));
-  }, [])
 
   return (
     <DataGrid

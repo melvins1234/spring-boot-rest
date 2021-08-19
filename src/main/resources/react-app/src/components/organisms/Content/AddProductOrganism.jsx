@@ -1,4 +1,4 @@
-import AddProductsForm from '../Form/AddProductsForm'
+
 import Divider from "@material-ui/core/Divider";
 
 import "./style.scss";
@@ -10,7 +10,7 @@ const AddProductOrganism = () => {
         <h3>Add Product</h3>
       </header>
       <Divider />
-      <AddProductsForm />
+
     </div>
   );
 };
