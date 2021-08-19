@@ -1,6 +1,6 @@
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Header from "./components/Header/Header";
 import { Product } from "./components/Product/Product";
@@ -29,6 +29,7 @@ import Categories from "./components/pages/category/Category";
 
 const App = () => {
   const dispatch = useDispatch();
+  const isExist = useSelector((state) => state.isLoggedIn);
 
   const isModalClose = () =>
     !sessionStorage.getItem("isModalClose") ? true : false;
@@ -66,14 +67,29 @@ const App = () => {
         ]}
       />
 
-      <Route exact path={"/dashboard"} component={() => <Dashboard />} />
-      <Route exact path={"/products"} component={() => <Products />} />
-      <Route
-        exact
-        path={"/products/add-product"}
-        component={() => <AddProductPage />}
-      />
-      <Route exact path={"/categories"} component={() => <Categories />} />
+      {/* Admin Components */}
+      <Route exact path={"/dashboard"}>
+        {( isExist && isExist.userLoggedIn.roles === "ADMIN") ? (
+          <Dashboard />
+        ) : (
+          <Redirect to="/" />
+        )}
+      </Route>
+      <Route exact path={"/products"}>
+        {isExist && isExist.userLoggedIn.roles === "ADMIN" ? (
+          <Products />
+        ) : (
+          <Redirect to="/" />
+        )}
+      </Route>
+
+      <Route exact path={"/categories"}>
+        {isExist && isExist.userLoggedIn.roles === "ADMIN" ? (
+          <Categories />
+        ) : (
+          <Redirect to="/" />
+        )}
+      </Route>
 
       <Route
         exact

@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class User {
 	
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String email;
     private String password;
@@ -82,6 +82,12 @@ public class User {
 	public void setRoles(String roles) {
 		this.roles = roles;
 	}
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", email=" + email + ", password=" + password + ", fullName=" + fullName
+				+ ", billingAddress=" + billingAddress + ", defaultShippingAddress=" + defaultShippingAddress
+				+ ", secondaryShippingAddress=" + secondaryShippingAddress + ", phone=" + phone + ", roles=" + roles
+				+ "]";
+	}
 	
-
 }

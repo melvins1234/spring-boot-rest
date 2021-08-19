@@ -24,7 +24,9 @@ export const SignIn = () => {
   const isExist = useSelector((state) => state.isLoggedIn);
   if (isExist) {
     setTimeout(() => {
-      history.push(path);
+      isExist.userLoggedIn.roles === "ADMIN"
+        ? history.push("/dashboard")
+        : history.push(path);
     }, 200);
   }
   useEffect(() => {
