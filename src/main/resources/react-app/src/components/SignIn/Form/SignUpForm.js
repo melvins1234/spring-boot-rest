@@ -10,7 +10,7 @@ const SignUpForm = ({ setSuccessSignUp }) => {
 
     let data = Object.fromEntries(new FormData(e.target).entries());
     console.log();
-    await fetch(`/users/${data.email}`, {
+    await fetch(`/api/users/${data.email}`, {
       method: "GET",
       headers: {
         Authorization: apiToken,
@@ -20,12 +20,14 @@ const SignUpForm = ({ setSuccessSignUp }) => {
     })
       .then((res) => {
         if (!res.ok) {
-          fetch("/users", {
+          data.roles = "USER";
+          console.log(data);
+          fetch("/api/users", {
             method: "POST",
             headers: {
-              Authorization: apiToken,
-              Accept: "application/json",
+              "Accept": "application/json",
               "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "*",
             },
             body: JSON.stringify(data),
           })
@@ -42,7 +44,7 @@ const SignUpForm = ({ setSuccessSignUp }) => {
     <section className="sign-up__form">
       <form id="sign-up-submit" onSubmit={SignUpFunction}>
         <Input
-          field={{ _uid: "name", label: "Name" }}
+          field={{ _uid: "fullName", label: "Name" }}
           type="text"
           required="required"
         />
