@@ -6,6 +6,7 @@ import Calendar from "../../molecules/menu tabs/Calendar";
 import Messages from "../../molecules/menu tabs/Messages";
 import Payments from "../../molecules/menu tabs/Payments";
 import Logout from "../../molecules/menu tabs/Logout";
+import Category from "../../molecules/menu tabs/Category";
 import Divider from "@material-ui/core/Divider";
 
 import "./style.scss";
@@ -20,6 +21,9 @@ const Navbar = () => {
         </li>
         <li>
           <Products />
+        </li>
+        <li>
+          <Category />
         </li>
         <li>
           <UserManagement />
