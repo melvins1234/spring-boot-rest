@@ -26,6 +26,7 @@ const AddNewCategoryForm = () => {
       body: JSON.stringify(data),
     }).then(res => res.json()).then(json => dispatch(addCategory(json)))
      
+    e.target.reset();
   };
 
   return (
@@ -37,7 +38,6 @@ const AddNewCategoryForm = () => {
           <InputField
             field={{ _uid: "name", label: "Name" }}
             type="text"
-            width="250"
             className="product__input"
             required="required"
           />

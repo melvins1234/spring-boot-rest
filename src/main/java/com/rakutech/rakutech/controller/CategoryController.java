@@ -4,8 +4,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -38,10 +36,10 @@ public class CategoryController {
     @PostMapping("")
     ResponseEntity<Category> createCategory(@RequestBody Category category) throws URISyntaxException {
     	
-    	if(categoryService.categoryByCategoryName(category.getName()) != null) {
-    		return ResponseEntity.status(HttpStatus.FORBIDDEN).build(); 
-    		
-    	}
+//    	if(categoryService.categoryByCategoryName(category.getName()) != null) {
+//    		return ResponseEntity.status(HttpStatus.FORBIDDEN).build(); 
+//    		
+//    	}
     	
     	Category result = categoryService.save(category);
         return ResponseEntity.created(new URI("/products/group/" + result.getId()))

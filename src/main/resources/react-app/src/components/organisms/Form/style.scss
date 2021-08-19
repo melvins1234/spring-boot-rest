@@ -2,7 +2,7 @@
   margin-top: 20px;
 }
 
-.modal--form {
+@mixin modal {
   position: absolute;
   z-index: 15;
   background: #fff;
@@ -16,7 +16,20 @@
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s, opacity 0.5s linear;
+  width: 410px;
+  max-width: 100%;
+}
 
+.modal--form {
+  @include modal;
+  &--show {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.modal--form--product {
+  @include modal;
   &--show {
     visibility: visible;
     opacity: 1;

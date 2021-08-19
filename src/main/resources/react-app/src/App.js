@@ -18,12 +18,14 @@ import { ProductList } from "./components/ProductList/ProductList";
 import { Cart } from "./components/Cart/Cart";
 import { Payment } from "./components/Payment/Payment";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+
 import { loadProducts } from "./store/action/loadProducts";
+import { category } from "./store/action/category";
 
 import Dashboard from "./components/pages/dashboard/Dashboard";
-import Products from "./components/pages/products/Products"
+import Products from "./components/pages/products/Products";
 import AddProductPage from "./components/pages/products/AddProductPage";
-import Categories from "./components/pages/category/Category"
+import Categories from "./components/pages/category/Category";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -31,19 +33,15 @@ const App = () => {
   const isModalClose = () =>
     !sessionStorage.getItem("isModalClose") ? true : false;
 
-  // useEffect(() => {
-  //   fetch("/api/products", {
-  //     method: "GET",
-  //     headers: new Headers({
-  //       "Content-Type": "application/x-www-form-urlencoded",
-  //     }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((json) => {
-  //       console.log(json);
-  //       dispatch(loadProducts(json));
-  //     });
-  // }, []);
+  useEffect(() => {
+    fetch("api/categories")
+      .then((res) => res.json())
+      .then((json) => dispatch(category(json)));
+
+    return fetch("api/products")
+      .then((res) => res.json())
+      .then((json) => dispatch(loadProducts(json)));
+  }, []);
 
   let [showModal, setShowModal] = useState(isModalClose());
   return (
@@ -68,10 +66,14 @@ const App = () => {
         ]}
       />
 
-      <Route exact path={"/admin"} component= { () => <Dashboard/>}/>
-      <Route exact path={"/products"} component= { () => <Products/>}/>
-      <Route exact path={"/products/add-product"} component= { () => <AddProductPage/>}/>
-      <Route exact path={"/categories"} component= { () => <Categories/>}/>
+      <Route exact path={"/dashboard"} component={() => <Dashboard />} />
+      <Route exact path={"/products"} component={() => <Products />} />
+      <Route
+        exact
+        path={"/products/add-product"}
+        component={() => <AddProductPage />}
+      />
+      <Route exact path={"/categories"} component={() => <Categories />} />
 
       <Route
         exact

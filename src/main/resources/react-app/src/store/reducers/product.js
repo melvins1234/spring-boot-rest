@@ -1,12 +1,11 @@
-let initState = JSON.parse(localStorage.getItem("products"))
-  ? JSON.parse(localStorage.getItem("products"))
-  : [];
 const Products = (state = [], action) => {
   switch (action.type) {
     case "load":
       state = [...action.payload];
       return state;
-
+    case "add-product":
+      state = [...state, action.payload];
+      return state;
     case "favorite":
       let isExistedIndex = state.findIndex(
         (e) => e.id === action.payload.id

@@ -7,6 +7,8 @@ const AddButton = ({value, className}) => {
     const showModal = () => {
         if(location.pathname === "/categories"){
             document.querySelector(".modal--form").classList.add('modal--form--show');
+        }else if(location.pathname === "/products"){
+            document.querySelector(".modal--form--product").classList.add('modal--form--product--show');
         }
     }
     return (

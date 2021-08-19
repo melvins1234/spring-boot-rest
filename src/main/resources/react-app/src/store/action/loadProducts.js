@@ -4,3 +4,10 @@ export const loadProducts = (value) => {
         payload: value
     }
 }
+
+export const addProductAction = (value) => {
+    return {
+        type: 'add-product',
+        payload: value
+    }
+}

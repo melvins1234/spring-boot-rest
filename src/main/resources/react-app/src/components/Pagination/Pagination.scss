@@ -18,10 +18,49 @@
           padding: 15px 20px;
           cursor: pointer;
         }
-        span.active, span:hover {
+        span.active,
+        span:hover {
           background-color: #000;
           color: #fff;
         }
+      }
+    }
+  }
+}
+.product-pagination {
+  margin-top: 20px;
+  ol {
+    li {
+      &:first-child, &:last-child {
+        span {
+          svg{
+            font-size: 13px;
+          }
+          &:hover {
+            background: none !important;
+            color: black !important;
+          }
+        }
+      }
+      .prev-disable {
+        color: rgb(185, 181, 181);
+        pointer-events: none;
+      }
+      span {
+        padding: 0 !important;
+        cursor: pointer;
+        display: flex;
+        width: 24px;
+        height: 24px;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        border-radius: 8px;
+      }
+      span.active,
+      span:hover {
+        background-color: #fd2e2e !important;
+        color: #fff;
       }
     }
   }

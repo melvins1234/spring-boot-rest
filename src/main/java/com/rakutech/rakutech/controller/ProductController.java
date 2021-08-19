@@ -3,8 +3,6 @@ package com.rakutech.rakutech.controller;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,14 +46,9 @@ public class ProductController {
 	@Autowired
 	ProductImageRepository productImageRepository;
 	
-	List<ProductImages> productImagesList = new ArrayList<>();
-	
 	@GetMapping("")
-	ResponseEntity<List<Product>> products(
-			@RequestParam(defaultValue = "0") Integer page, 
-            @RequestParam(defaultValue = "10") Integer pageSize,
-            @RequestParam(defaultValue = "id") String sortBy) {
-	    List<Product> productList = productService.productList(page, pageSize, sortBy);
+	ResponseEntity<List<Product>> products() {
+	    List<Product> productList = productService.productList();
 		 
         return new ResponseEntity<List<Product>>(productList, new HttpHeaders(), HttpStatus.OK); 
 	}
@@ -72,32 +65,37 @@ public class ProductController {
 	
     @PostMapping("")
     ResponseEntity<Product> createProduct(@RequestBody Product product) throws URISyntaxException, IOException {
+    	System.out.println(product);
         Product result = productService.saveProduct(product);
         return ResponseEntity.created(new URI("/products/group/" + result.getId()))
                 .body(result);
     }
     
     @RequestMapping(value="/upload", method=RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<Object> uploadFile(@RequestParam("file") MultipartFile[] multipartFile, 
+    public ResponseEntity<Object> uploadFile(@RequestParam("file") MultipartFile multipartFile, 
     		HttpServletRequest request) throws URISyntaxException, IOException {
 
     	String uploadDir = "images/";
+//    	List<ProductImages> productImagesList = new ArrayList<>();
+
+    	ProductImages productImages;
     	
-        Arrays.asList(multipartFile).stream().forEach(file -> {
-        	if(!file.isEmpty()) {
-        		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-                productImagesList.add(new ProductImages(request.getScheme()+ "://" + request.getServerName() + ":" + request.getServerPort() + "/api/images/" + fileName));
+        	if(!multipartFile.isEmpty()) {
+        		String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+//                productImagesList.add(new ProductImages(request.getScheme()+ "://" + request.getServerName() + ":" + request.getServerPort() + "/api/images/" + fileName));
+        		
                 try {
-                	FileUploadUtil.saveFile(uploadDir, fileName, file);
+                	FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 	      		} catch (IOException e) {
 	      			
 	      		} 
+                productImages = new ProductImages(request.getScheme()+ "://" + request.getServerName() + ":" + request.getServerPort() + "/api/images/" + fileName);
+                return ResponseEntity.ok().body(productImages);
         	}
     	  
-        });
         
-//        return new ResponseEntity<>("File is Uploaded successfully", HttpStatus.OK);
-        return ResponseEntity.ok().body(productImagesList);
+        	return ResponseEntity.unprocessableEntity().build();
+      
     }
 	
 	@PutMapping("/{id}")
