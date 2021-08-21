@@ -72,7 +72,6 @@ const useStyles = makeStyles((theme) => ({
   headerIcon: {
     background: "#fd2e2e",
     borderRadius: "50%",
-    position: "relative",
     height: "70px",
     display: "flex",
     width: "70px",
@@ -117,9 +116,9 @@ const ProductTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [open, setOpen] = useState(false);
   const [postsPerPage] = useState(10);
-  const [deleteId, setDeleteId] = useState();
 
   const products = useSelector((state) => state.products);
+  const token = useSelector((state) => state.isLoggedIn.userLoggedIn.token);
   const dispatch = useDispatch();
 
   const classes = useStyles();
@@ -131,11 +130,14 @@ const ProductTable = () => {
   const handleClose = () => {
     setOpen(false);
   };
-
   const deleteHandler = () => {
-    selectedProductIds.map((id) => {
+    selectedProductIds.forEach((id) => {
       fetch(`/api/products/${id}`, {
         method: "DELETE",
+        headers: new Headers({
+          Authorization: token,
+          "Content-Type": "application/x-www-form-urlencoded",
+        }),
       }).then(() => {
         setOpen(false);
         dispatch(removeProductAction(id));
@@ -239,7 +241,7 @@ const ProductTable = () => {
             title="Delete"
           >
             <IconButton aria-label="delete">
-              <DeleteIcon />
+              <DeleteOutlineOutlinedIcon />
             </IconButton>
           </Tooltip>
         ) : (
@@ -291,6 +293,7 @@ const ProductTable = () => {
                   <img
                     style={{ height: "50px" }}
                     src={row.productImages.map((val) => val.image)[0]}
+                    alt={row.name}
                   />
                 </TableCell>
                 <TableCell>{row.name}</TableCell>

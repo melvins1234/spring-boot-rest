@@ -24,7 +24,7 @@ const Pagination = ({
   return (
     <nav
       className={`product-listing__products__pagination ${
-        className != "" ? className : ""
+        className !== "" ? className : ""
       }`}
     >
       <ol>

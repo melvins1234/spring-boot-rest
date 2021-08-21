@@ -2,14 +2,18 @@ import { ProductNavTab } from "./ProductNavTabs";
 import { ProductColor } from "./ProductColor";
 
 export const ProductCategory = (props) => {
-
-    let tabs = [];
-    props.nav.forEach(e => {
-        tabs.push(
-            <ProductNavTab key={e.category} category={e.category} stockVal={e.stock} path={e.path} active={e.active} />
-        )
-    })
-
+  let tabs = [];
+  props.nav.forEach((e) => {
+    tabs.push(
+      <ProductNavTab
+        key={e.category}
+        category={e.category}
+        stockVal={e.stock}
+        path={e.path}
+        active={e.active}
+      />
+    );
+  });
 
   return (
     <nav className="product-listing__filter__categories">
@@ -33,8 +37,20 @@ export const ProductPrice = () => {
         <span id="max-price">$25.99</span>
       </div>
       <div className="price-slider">
-        <input defaultValue="25000" min="0" max="120000" step="500" type="range" />
-        <input defaultValue="50000" min="0" max="120000" step="500" type="range" />
+        <input
+          defaultValue="25000"
+          min="0"
+          max="120000"
+          step="500"
+          type="range"
+        />
+        <input
+          defaultValue="50000"
+          min="0"
+          max="120000"
+          step="500"
+          type="range"
+        />
       </div>
     </section>
   );

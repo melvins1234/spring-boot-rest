@@ -47,21 +47,25 @@
     justify-content: space-between;
     align-items: center;
 
+    &--login{
+      align-items: center !important;
+    }
+
     &--right {
       display: flex;
       align-items: center;
       position: relative;
+      align-items: stretch;
     }
 
     &--account__container {
-      position: absolute;
       display: flex;
       flex-direction: column;
       cursor: pointer;
-      width: 130px;
       top: -8px;
       padding: 0 10px;
       text-align: right;
+      justify-content: center;
     }
 
     span {
@@ -71,9 +75,10 @@
     &--user-profile {
       padding: 0 !important;
       font-weight: bold;
-      width: 130px;
       text-align: right;
       position: relative;
+      display: flex;
+      align-items: stretch;
     }
 
     div {

@@ -1,10 +1,11 @@
+import { NavLink } from "react-router-dom";
 import CalendarIcon from "../../atoms/icons/Calendar Icon/Calendar";
 
 const Calendar = () => {
   return (
-    <a className="nav__tab">
+    <NavLink to="/dashboard" className="nav__tab">
       <CalendarIcon /> Calendar
-    </a>
+    </NavLink>
   );
 };
 

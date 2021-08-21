@@ -34,14 +34,14 @@ export const HeaderTop = () => {
         </span>
       </div>
       <div className="header__top--right">
-        <div className="header__top--user-profile">
+        <div className={`header__top--user-profile ${isLoggedIn.isLoggedIn ? "": "header__top--login"}` }>
           {isLoggedIn.isLoggedIn ? (
             <section
               onMouseEnter={() => setShowPopover(true)}
               onMouseLeave={() => setShowPopover(false)}
               className="header__top--account__container"
             >
-              {isLoggedIn.userLoggedIn.name}
+              {isLoggedIn.userLoggedIn.fullName}
               {showPopover ? <Popover /> : ""}
             </section>
           ) : (

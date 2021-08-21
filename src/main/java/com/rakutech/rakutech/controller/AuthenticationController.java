@@ -9,6 +9,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
@@ -43,6 +44,10 @@ public class AuthenticationController {
 					@RequestParam("password") String pwd) {
 		
 		UserDTO userDTO = new UserDTO();
+		
+		User user = userRepository.findByEmailAddressPass(email, pwd);
+		
+		System.out.println(user);
 		
 		userRepository.findAll().forEach(e -> {
 			if(e.getEmail().equals(email) && e.getPassword().equals(pwd)) {
@@ -91,7 +96,7 @@ public class AuthenticationController {
                 .body(result);
     }
     
-	@GetMapping("/api/users/{value}")
+	@GetMapping("/api/user/{value}")
 	ResponseEntity<?> getUserByEmail(@PathVariable String value) throws NumberFormatException{
 		Optional<User> user;
 		if(value.contains("@")) 
@@ -101,5 +106,12 @@ public class AuthenticationController {
 		
 		return user.map(response -> ResponseEntity.ok().body(response))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+	}
+	
+	@GetMapping("/api/users")
+	ResponseEntity<Optional<List<User>>> users() {
+		Optional<List<User>> userList = userService.userList();
+		 
+        return new ResponseEntity<Optional<List<User>>>(userList, new HttpHeaders(), HttpStatus.OK); 
 	}
 }

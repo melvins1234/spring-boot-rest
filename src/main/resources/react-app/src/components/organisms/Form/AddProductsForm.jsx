@@ -19,7 +19,7 @@ const AddProducts = () => {
 
   let addProduct = (event) => {
     event.preventDefault();
-    let images = new Array();
+    let images = [];
     let data = Object.fromEntries(new FormData(event.target).entries());
     delete data.fileToUpload;
     data = {
@@ -137,6 +137,7 @@ const AddProducts = () => {
                       data-file={val.name}
                       key={index}
                       src={`${URL.createObjectURL(val)}`}
+                      alt={val.name}
                     />
                   );
                 })}

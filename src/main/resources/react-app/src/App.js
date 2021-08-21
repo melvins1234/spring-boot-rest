@@ -20,11 +20,14 @@ import { Payment } from "./components/Payment/Payment";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 import { loadProducts } from "./store/action/loadProducts";
+import { loadUser } from "./store/action/addUser";
 import { category } from "./store/action/category";
 
 import Dashboard from "./components/pages/dashboard/Dashboard";
 import Products from "./components/pages/products/Products";
 import Categories from "./components/pages/category/Category";
+import UserManagement from "./components/pages/users/UserManagement";
+import MyAccount from "./components/My Account/MyAccount";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -38,9 +41,26 @@ const App = () => {
       .then((res) => res.json())
       .then((json) => dispatch(category(json)));
 
-    return fetch("api/products")
+    fetch("api/products")
       .then((res) => res.json())
       .then((json) => dispatch(loadProducts(json)));
+
+    if (isExist) {
+      if (isExist.userLoggedIn.roles === "ADMIN") {
+
+        fetch("api/users", {
+          method: "GET",
+          headers: new Headers({
+            Authorization: isExist.userLoggedIn.token,
+            "Content-Type": "application/x-www-form-urlencoded",
+          }),
+        })
+          .then((res) => res.json())
+          .then((json) => dispatch(loadUser(json)));
+      }
+    }
+
+    return;
   }, []);
 
   let [showModal, setShowModal] = useState(isModalClose());
@@ -59,6 +79,7 @@ const App = () => {
           "/cart",
           "/accessories",
           "/payment",
+          "/my-account"
         ]}
         component={() => [
           showModal ? <Modal key="modal" setShowModal={setShowModal} /> : null,
@@ -68,7 +89,7 @@ const App = () => {
 
       {/* Admin Components */}
       <Route exact path={"/dashboard"}>
-        {( isExist && isExist.userLoggedIn.roles === "ADMIN") ? (
+        {isExist && isExist.userLoggedIn.roles === "ADMIN" ? (
           <Dashboard />
         ) : (
           <Redirect to="/" />
@@ -81,10 +102,16 @@ const App = () => {
           <Redirect to="/" />
         )}
       </Route>
-
       <Route exact path={"/categories"}>
         {isExist && isExist.userLoggedIn.roles === "ADMIN" ? (
           <Categories />
+        ) : (
+          <Redirect to="/" />
+        )}
+      </Route>
+      <Route exact path={"/users"}>
+        {isExist && isExist.userLoggedIn.roles === "ADMIN" ? (
+          <UserManagement />
         ) : (
           <Redirect to="/" />
         )}
@@ -100,10 +127,12 @@ const App = () => {
           "/macbook",
           "/cart",
           "/accessories",
+          "/my-account"
         ]}
         component={() => [<Breadcrumbs key="breadcrumbs" />]}
       />
 
+      <Route exact path="/my-account" component={() => [<MyAccount key="MyAccount" />]} />
       <Route exact path="/cart" component={() => [<Cart key="Cart" />]} />
       <Route
         exact
@@ -149,6 +178,7 @@ const App = () => {
           "/cart",
           "/accessories",
           "/payment",
+          "/my-account"
         ]}
         component={() => [<Footer key="Footer" />]}
       />

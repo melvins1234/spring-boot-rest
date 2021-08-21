@@ -1,10 +1,11 @@
+import { NavLink } from "react-router-dom";
 import MessageIcon from "../../atoms/icons/Message Icon/Message";
 
 const Messages = () => {
   return (
-    <a className="nav__tab">
+    <NavLink to="/dashboard" className="nav__tab">
       <MessageIcon /> Messages
-    </a>
+    </NavLink>
   );
 };
 

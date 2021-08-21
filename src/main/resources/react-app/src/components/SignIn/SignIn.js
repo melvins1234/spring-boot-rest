@@ -41,7 +41,7 @@ export const SignIn = () => {
       } else if (e.target.id === "modal") {
         setSuccessSignUp(false);
       } else if (
-        e.target.id === "successful-registered__success" > -1  ) {
+        e.target.id === "successful-registered__success") {
         setSuccessSignUp(false);
       }
     });

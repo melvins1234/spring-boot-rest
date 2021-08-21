@@ -1,0 +1,49 @@
+.myaccount {
+  padding: 60px 0 25px 0;
+  background: #f6f7f8;
+  .wrapper {
+    flex-direction: column;
+  }
+  &--title-page {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 25px;
+  }
+  &--content {
+    display: flex;
+    justify-content: space-between;
+  }
+  &--sidebar-nav {
+    width: 220px;
+    max-width: 100%;
+  }
+  &--nav {
+    li {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      padding: 5px 10px;
+      border-radius: 4px;
+      margin: 5px 0;
+      svg {
+        margin-right: 10px;
+      }
+      &.myaccount--tab--active,
+      &:hover {
+        color: #33a0ff;
+        background-color: RGBA(51, 160, 255, 0.1);
+      }
+    }
+  }
+  &--content-form {
+    background: #fff;
+    width: calc(100% - 255px);
+    border-radius: 10px;
+    padding: 60px 40px;
+    &--title-page {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 25px;
+    }
+  }
+}
