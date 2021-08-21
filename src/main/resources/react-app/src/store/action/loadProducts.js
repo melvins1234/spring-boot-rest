@@ -11,3 +11,10 @@ export const addProductAction = (value) => {
         payload: value
     }
 }
+
+export const removeProductAction = (value) => {
+    return {
+        type: 'remove-product',
+        payload: value
+    }
+}

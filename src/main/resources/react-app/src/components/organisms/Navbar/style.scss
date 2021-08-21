@@ -17,15 +17,11 @@
     width: 330px;
     max-width: 100%;
 
-    &:last-child{
-      margin-top: 10px;
-    }
-
-    &:hover {
-      color: #fd2e2e;
-      cursor: pointer;
-      background: rgba($color: #fd2e2e, $alpha: 0.2);
-    }
+    // &:hover {
+    //   color: #fd2e2e;
+    //   cursor: pointer;
+    //   background: rgba($color: #fd2e2e, $alpha: 0.2);
+    // }
   }
   &--icon {
     margin-right: 17px;

@@ -10,6 +10,7 @@ import "./ProductMedia.scss";
 
 export let Product = (props) => {
   // const [prodImage, setProdImage] = useState("beats__171717");
+
   const [content, setContent] = useState(
     <div>
       <p className="main__product--desc">
@@ -100,6 +101,9 @@ export let Product = (props) => {
   let location = useLocation();
   let history = useHistory();
   const [product] = useState((location.state) ? location.state.data : {});
+
+  console.log(product)
+
   console.log((Object.entries(product).length === 0) ? history.push('/') : false);
   return (
     <section id="main" className="main">
@@ -108,12 +112,12 @@ export let Product = (props) => {
           <section className="main__product--upper">
             {/* <ProductImage prodImage={prodImage} />
             <ProductDetails setProdImage={setProdImage} /> */}
-            <ProductImage image={product.image} alt={product.product} />
+            <ProductImage image={product.productImages} alt={product.product} />
             <ProductDetails
               key={product.id}
               id={product.id}
               image={product.image}
-              product={product.product}
+              product={product.name}
               price={product.price}
               discountedPrice={product.discountedPrice}
               stars={product.stars}

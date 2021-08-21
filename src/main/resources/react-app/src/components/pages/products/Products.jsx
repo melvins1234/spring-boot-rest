@@ -6,10 +6,10 @@ import "./style.scss";
 
 const Products = () => {
   return (
-    <div>
+    <section className="page-holder product">
       <Header />
       <Content />
-    </div>
+    </section>
   );
 };
 

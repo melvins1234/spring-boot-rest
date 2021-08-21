@@ -24,7 +24,6 @@ import { category } from "./store/action/category";
 
 import Dashboard from "./components/pages/dashboard/Dashboard";
 import Products from "./components/pages/products/Products";
-import AddProductPage from "./components/pages/products/AddProductPage";
 import Categories from "./components/pages/category/Category";
 
 const App = () => {

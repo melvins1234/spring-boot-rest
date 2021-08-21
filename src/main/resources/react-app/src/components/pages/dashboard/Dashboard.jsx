@@ -6,12 +6,12 @@ import "./style.scss";
 
 const Dashboard = () => {
   return (
-    <div>
+    <section className="page-holder dashboard">
       <Header />
       <div className="main__content">
         <Navbar />
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -44,7 +44,7 @@ export const Card = (props) => {
     <div key={props.product} className={`bottom1__card ${props.hotProduct}`}>
       <NavLink
         className="bottom1__card__back--link"
-        to={{ pathname: "/product", state: { data: props } }}
+        to={{ pathname: "/product", state: { data: props.data } }}
       ></NavLink>
       <div className="bottom1__card__flip">
         <div className="bottom1__card__inner">

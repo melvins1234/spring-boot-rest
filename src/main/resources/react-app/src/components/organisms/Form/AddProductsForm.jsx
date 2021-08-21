@@ -29,7 +29,7 @@ const AddProducts = () => {
 
     productImages.forEach((e) => {
       const formData = new FormData();
-      formData.append("file", productImages[0]);
+      formData.append("file", e);
 
       fetch("/api/products/upload", {
         method: "POST",

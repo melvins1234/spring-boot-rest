@@ -16,7 +16,7 @@ export const SuccessSignup = ({className}) => {
             details
           </p>
           <footer className="successful-registered__footer">
-            <button className="successful-registered__success" data-dismiss="modal">
+            <button id="successful-registered__success" className="successful-registered__success" data-dismiss="modal">
               OK
             </button>
           </footer>

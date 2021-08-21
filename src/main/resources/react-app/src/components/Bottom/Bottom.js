@@ -18,16 +18,17 @@ export const Bottom = () => {
           {productList.map((e) => {
             return (
               <Card
-                key={JSON.stringify(e)}
+                key={e.id}
                 id={e.id}
-                image={e.image}
-                product={e.product}
+                image={e.productImages.map(e => e.image)[0]}
+                product={e.name}
                 price={e.price}
                 discountedPrice={e.discount}
                 stars={e.stars}
                 hotProduct={e.hotProduct}
                 quantity={e.quantity}
                 favorite={e.favorite}
+                data={e}
               />
             );
           })}

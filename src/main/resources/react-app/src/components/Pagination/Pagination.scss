@@ -28,7 +28,8 @@
   }
 }
 .product-pagination {
-  margin-top: 20px;
+  margin: 20px 0;
+  background: none !important;
   ol {
     li {
       &:first-child, &:last-child {
