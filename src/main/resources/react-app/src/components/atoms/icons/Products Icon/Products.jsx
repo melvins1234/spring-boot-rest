@@ -1,6 +1,7 @@
 import AllInboxOutlinedIcon from '@material-ui/icons/AllInboxOutlined';
+import GridViewIcon from '@material-ui/icons/GridView';
 
-const Products = () => {
+export const ProductsIcon = () => {
     return (
         <span className="nav--icon">
             <AllInboxOutlinedIcon />
@@ -8,4 +9,10 @@ const Products = () => {
     )
 }
 
-export default Products
+export const ViewProductsIcon = () => {
+    return (
+        <span className="nav--icon">
+            <GridViewIcon />
+        </span>
+    )
+}

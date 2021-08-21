@@ -166,12 +166,13 @@ html, body{
     height: 100%;
 }
 
-body {
+.page-holder {
     margin: 0;
     padding: 0;
     font: normal normal normal 14px/17px 'Rajdhani', sans-serif;
     color: #22262A;
     overflow-x: hidden;
+    height: 100%;
 }
 
 h1 {

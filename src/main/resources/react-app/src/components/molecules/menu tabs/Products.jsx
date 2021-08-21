@@ -1,14 +1,23 @@
-import ProductsIcon from "../../atoms/icons/Products Icon/Products";
+import {
+  ProductsIcon,
+  ViewProductsIcon,
+} from "../../atoms/icons/Products Icon/Products";
 import { NavLink } from "react-router-dom";
 
-const Products = () => {
+export const Products = () => {
   return (
-    <NavLink to="/products">
+    <span className="nav__tab">
+      <ProductsIcon /> Products
+    </span>
+  );
+};
+
+export const ViewProducts = ({ setOpen }) => {
+  return (
+    <NavLink onClick={() => setOpen(true)} to="/products">
       <span className="nav__tab">
-        <ProductsIcon /> Products
+        <ViewProductsIcon /> View
       </span>
     </NavLink>
   );
 };
-
-export default Products;

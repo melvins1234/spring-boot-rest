@@ -6,6 +6,8 @@ const Products = (state = [], action) => {
     case "add-product":
       state = [...state, action.payload];
       return state;
+    case "remove-product":
+      return state = state.filter(item => item.id !== action.payload);
     case "favorite":
       let isExistedIndex = state.findIndex(
         (e) => e.id === action.payload.id

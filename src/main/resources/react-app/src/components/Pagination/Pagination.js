@@ -29,22 +29,35 @@ const Pagination = ({
     >
       <ol>
         <li>
-          <span onClick={() => pageCLickHandler(currentPage-=1)} className={currentPage <= 1 ? 'prev-disable' : null}>
+          <span
+            onClick={() => pageCLickHandler((currentPage -= 1))}
+            className={currentPage <= 1 ? "prev-disable" : null}
+          >
             <ArrowBackIosIcon />
           </span>
         </li>
-        {pageNumbers.map((page) => { console.log(page); return (
-          <li key={page}>
-            <span
-              onClick={() => pageCLickHandler(page)}
-              className={page === currentPage ? "active" : null}
-            >
-              {page}
-            </span>
-          </li>
-        ) })}
+        {pageNumbers.map((page) => {
+          return (
+            <li key={page}>
+              <span
+                onClick={() => pageCLickHandler(page)}
+                className={page === currentPage ? "active" : null}
+              >
+                {page}
+              </span>
+            </li>
+          );
+        })}
         <li>
-          <span onClick={() => pageCLickHandler(currentPage+=1)} className={pageNumbers[pageNumbers.length - 1] === currentPage ? 'prev-disable' : null}>
+          <span
+            onClick={() => pageCLickHandler((currentPage += 1))}
+            className={
+              pageNumbers[pageNumbers.length - 1] === currentPage ||
+              totalPosts <= 0
+                ? "prev-disable"
+                : null
+            }
+          >
             <ArrowForwardIosIcon />
           </span>
         </li>
