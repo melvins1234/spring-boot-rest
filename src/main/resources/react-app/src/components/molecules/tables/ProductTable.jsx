@@ -23,7 +23,7 @@ import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined"
 import DeleteIcon from "@material-ui/icons/Delete";
 
 import Pagination from "../../Pagination/Pagination";
-
+import ModalDelete from "../../organisms/Modal/ModalDelete";
 import { removeProductAction } from "../../../store/action/loadProducts";
 
 const useStyles = makeStyles((theme) => ({
@@ -187,38 +187,7 @@ const ProductTable = () => {
 
   return (
     <section>
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={classes.modal}
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={open}>
-          <div className={classes.paper}>
-            <span className={classes.headerIcon}>
-              <DeleteIcon />
-            </span>
-            <h1 className={classes.h1}>Delete Product?</h1>
-            <p id="transition-modal-description">
-              You'll permanently delete the product.
-            </p>
-            <footer className={classes.footer}>
-              <span onClick={handleClose} className={classes.spanButton}>
-                Cancel
-              </span>
-              <span onClick={deleteHandler} className={classes.spanButton}>
-                Delete
-              </span>
-            </footer>
-          </div>
-        </Fade>
-      </Modal>
+      {open ? <ModalDelete setOpen={setOpen} infoToDelete={selectedProductIds} from={'User'}/> : ""}
       <Toolbar>
         {selectedProductIds.length > 0 ? (
           <Typography

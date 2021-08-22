@@ -12,3 +12,10 @@ export const loadUser = (value) => {
     }
 }
 
+export const deleteUser = (value) => {
+    return {
+        type: 'delete-user',
+        payload: value
+    }
+}
+

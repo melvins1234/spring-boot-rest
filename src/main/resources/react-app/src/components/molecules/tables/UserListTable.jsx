@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -16,6 +16,7 @@ import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 
 import Pagination from "../../Pagination/Pagination";
+import ModalDelete from "../../organisms/Modal/ModalDelete";
 
 const useStyles = makeStyles((theme) => ({
   tableContainer: {
@@ -57,6 +58,9 @@ const useStyles = makeStyles((theme) => ({
 
 const UserListTable = () => {
   const users = useSelector((state) => state.users);
+  const [open, setOpen] = useState(false);
+  const [clicked, setClicked] = useState(false);
+  const [infoToDelete, setInfoToDelete] = useState();
 
   //   Pagination
   const [currentPage, setCurrentPage] = useState(1);
@@ -68,8 +72,10 @@ const UserListTable = () => {
   //
 
   const classes = useStyles();
+
   return (
     <section>
+      {open ? <ModalDelete setOpen={setOpen} infoToDelete={infoToDelete} from={'User'}/> : ""}
       <TableContainer component={Paper}>
         <Table
           className={classes.table}
@@ -123,7 +129,14 @@ const UserListTable = () => {
                   </span>
 
                   <span>
-                    <Tooltip className={classes.button} title="Delete">
+                    <Tooltip
+                      onClick={() => {
+                        setOpen(true);
+                        setInfoToDelete(row.id);
+                      }}
+                      className={classes.button}
+                      title="Delete"
+                    >
                       <IconButton aria-label="delete">
                         <DeleteOutlineOutlinedIcon />
                       </IconButton>

@@ -7,6 +7,10 @@ const addUser = (state = [], action) => {
       state.push(action.payload);
       localStorage.setItem("users", JSON.stringify(state));
       return state;
+    case "delete-user":
+      state = state.filter(item => item.id !== action.payload);
+      localStorage.setItem("users", JSON.stringify(state));
+      return state;
     default:
       return state;
   }
