@@ -10,9 +10,6 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
-import Modal from "@material-ui/core/Modal";
-import Backdrop from "@material-ui/core/Backdrop";
-import Fade from "@material-ui/core/Fade";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -20,11 +17,9 @@ import Typography from "@material-ui/core/Typography";
 
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
-import DeleteIcon from "@material-ui/icons/Delete";
 
 import Pagination from "../../Pagination/Pagination";
 import ModalDelete from "../../organisms/Modal/ModalDelete";
-import { removeProductAction } from "../../../store/action/loadProducts";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -112,39 +107,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ProductTable = () => {
-  const [selectedProductIds, setSelectedProductIds] = useState([]);
+  const [selectedRows, setSelectedRows] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [open, setOpen] = useState(false);
   const [postsPerPage] = useState(10);
 
   const products = useSelector((state) => state.products);
-  const token = useSelector((state) => state.isLoggedIn.userLoggedIn.token);
-  const dispatch = useDispatch();
 
   const classes = useStyles();
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = products.slice(indexOfFirstPost, indexOfLastPost);
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-  const deleteHandler = () => {
-    selectedProductIds.forEach((id) => {
-      fetch(`/api/products/${id}`, {
-        method: "DELETE",
-        headers: new Headers({
-          Authorization: token,
-          "Content-Type": "application/x-www-form-urlencoded",
-        }),
-      }).then(() => {
-        setOpen(false);
-        dispatch(removeProductAction(id));
-      });
-    });
-    setSelectedProductIds([]);
-  };
 
   let handleChange = (event) => {
     let newSelectedProductds;
@@ -155,54 +129,54 @@ const ProductTable = () => {
       newSelectedProductds = [];
     }
 
-    setSelectedProductIds(newSelectedProductds);
+    setSelectedRows(newSelectedProductds);
   };
 
   const handleSelectOne = (event, id) => {
-    const selectedIndex = selectedProductIds.indexOf(id);
+    const selectedIndex = selectedRows.indexOf(id);
     let newSelectedProductds = [];
 
     if (selectedIndex === -1) {
       newSelectedProductds = newSelectedProductds.concat(
-        selectedProductIds,
+        selectedRows,
         id
       );
     } else if (selectedIndex === 0) {
       newSelectedProductds = newSelectedProductds.concat(
-        selectedProductIds.slice(1)
+        selectedRows.slice(1)
       );
-    } else if (selectedIndex === selectedProductIds.length - 1) {
+    } else if (selectedIndex === selectedRows.length - 1) {
       newSelectedProductds = newSelectedProductds.concat(
-        selectedProductIds.slice(0, -1)
+        selectedRows.slice(0, -1)
       );
     } else if (selectedIndex > 0) {
       newSelectedProductds = newSelectedProductds.concat(
-        selectedProductIds.slice(0, selectedIndex),
-        selectedProductIds.slice(selectedIndex + 1)
+        selectedRows.slice(0, selectedIndex),
+        selectedRows.slice(selectedIndex + 1)
       );
     }
 
-    setSelectedProductIds(newSelectedProductds);
+    setSelectedRows(newSelectedProductds);
   };
 
   return (
     <section>
-      {open ? <ModalDelete setOpen={setOpen} infoToDelete={selectedProductIds} from={'User'}/> : ""}
+      {open ? <ModalDelete setOpen={setOpen} infoToDelete={selectedRows} setSelectedRows={setSelectedRows} from={'Product'}/> : ""}
       <Toolbar>
-        {selectedProductIds.length > 0 ? (
+        {selectedRows.length > 0 ? (
           <Typography
             className={classes.title}
             color="inherit"
             variant="subtitle1"
             component="div"
           >
-            {selectedProductIds.length} selected
+            {selectedRows.length} selected
           </Typography>
         ) : (
           ""
         )}
 
-        {selectedProductIds.length > 0 ? (
+        {selectedRows.length > 0 ? (
           <Tooltip
             onClick={() => {
               setOpen(true);
@@ -227,11 +201,11 @@ const ProductTable = () => {
             <TableRow className={classes.headerRow}>
               <TableCell className={classes.column}>
                 <Checkbox
-                  checked={selectedProductIds.length === products.length}
+                  checked={selectedRows.length === products.length}
                   onChange={handleChange}
                   indeterminate={
-                    selectedProductIds.length > 0 &&
-                    selectedProductIds.length < products.length
+                    selectedRows.length > 0 &&
+                    selectedRows.length < products.length
                   }
                 />
               </TableCell>
@@ -249,11 +223,11 @@ const ProductTable = () => {
               <TableRow
                 key={row.id}
                 hover
-                selected={selectedProductIds.indexOf(row.id) !== -1}
+                selected={selectedRows.indexOf(row.id) !== -1}
               >
                 <TableCell className={classes.column}>
                   <Checkbox
-                    checked={selectedProductIds.indexOf(row.id) !== -1}
+                    checked={selectedRows.indexOf(row.id) !== -1}
                     onChange={(event) => handleSelectOne(event, row.id)}
                   />
                 </TableCell>

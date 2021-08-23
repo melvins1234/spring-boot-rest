@@ -48,8 +48,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
 		.authorizeRequests()
 		.antMatchers("/resources/**","/images/**","/css/**","/fonts/**","/js/**", "/api/user/**").permitAll()
-		.antMatchers(HttpMethod.GET,"/api/products", "/api/categories", "/api/images/**").permitAll()
-		.antMatchers(HttpMethod.POST, "/api/categories", "/auth","/api/products", "/api/users", "/api/products/upload/**").permitAll()
+		.antMatchers(HttpMethod.GET,"/api/products", "/api/categories", "/api/images/**", "/api/products/categories/**").permitAll()
+		.antMatchers(HttpMethod.POST, "/auth", "/api/users").permitAll()
 		.antMatchers(HttpMethod.PUT, "/api/products/**").permitAll()
 		.anyRequest().authenticated();
 	}

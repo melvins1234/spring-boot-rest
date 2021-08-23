@@ -5,6 +5,7 @@ import Fade from "@material-ui/core/Fade";
 import { makeStyles } from "@material-ui/core/styles";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { deleteUser } from "../../../store/action/addUser";
+import { removeProductAction } from "../../../store/action/loadProducts";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -63,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ModalDelete = ({ setOpen, infoToDelete, from }) => {
+const ModalDelete = ({ setOpen, infoToDelete, setSelectedRows, from }) => {
   const token = useSelector((state) => state.isLoggedIn.userLoggedIn.token);
   const handleClose = () => setOpen(false);
   const dispatch = useDispatch();
@@ -81,6 +82,20 @@ const ModalDelete = ({ setOpen, infoToDelete, from }) => {
         setOpen(false);
         dispatch(deleteUser(infoToDelete));
       });
+    }else if(from === "Product"){
+      infoToDelete.forEach((id) => {
+        fetch(`/api/products/${id}`, {
+          method: "DELETE",
+          headers: new Headers({
+            Authorization: token,
+            "Content-Type": "application/x-www-form-urlencoded",
+          }),
+        }).then(() => {
+          setOpen(false);
+          dispatch(removeProductAction(id));
+        });
+      });
+      setSelectedRows([]);
     }
   };
 
@@ -89,7 +104,7 @@ const ModalDelete = ({ setOpen, infoToDelete, from }) => {
       aria-labelledby="transition-modal-title"
       aria-describedby="transition-modal-description"
       className={classes.modal}
-      open={setOpen.length}
+      open={setOpen.length >= 1}
       onClose={handleClose}
       closeAfterTransition
       BackdropComponent={Backdrop}
@@ -97,7 +112,7 @@ const ModalDelete = ({ setOpen, infoToDelete, from }) => {
         timeout: 500,
       }}
     >
-      <Fade in={setOpen}>
+      <Fade in={setOpen.length >= 1}>
         <div className={classes.paper}>
           <span className={classes.headerIcon}>
             <DeleteIcon />

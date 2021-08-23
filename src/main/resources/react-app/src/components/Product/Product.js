@@ -107,8 +107,6 @@ export let Product = (props) => {
       <section className="wrapper">
         <section className="main__product--info">
           <section className="main__product--upper">
-            {/* <ProductImage prodImage={prodImage} />
-            <ProductDetails setProdImage={setProdImage} /> */}
             <ProductImage image={product.productImages} alt={product.product} />
             <ProductDetails
               key={product.id}

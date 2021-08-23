@@ -14,10 +14,6 @@
   @include for-desktop() {
   }
 
-  @media (max-width: 991px) {
-    margin-top: 155px;
-  }
-
   @include for-tablet-small() {
     padding: 0 10px;
 

@@ -17,7 +17,11 @@ const Popover = () => {
         <li>
           <NavLink to="/my-account">My Account</NavLink>
         </li>
-        <li><span onClick={() => dispatch(isLoggedOut())}>Logout</span></li>
+        <li><span onClick={() => {
+          localStorage.clear();
+          window.location.href = "/";
+          // dispatch(isLoggedOut())
+          }}>Logout</span></li>
       </ul>
     </section>
   );

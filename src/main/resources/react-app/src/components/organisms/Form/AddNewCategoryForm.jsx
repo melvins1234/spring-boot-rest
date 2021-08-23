@@ -1,39 +1,48 @@
-import { useDispatch } from "react-redux";
-import {addCategory} from '../../../store/action/category'
-
+import { useSelector, useDispatch } from "react-redux";
+import { addCategory } from "../../../store/action/category";
+import { ErrorFetchHandler } from "../../ErrorFetchHandler/ErrorFetchHandler";
 import InputField from "../../molecules/input field/InputField";
 import SaveProductButton from "../../atoms/buttons/Submit/SaveProductButton";
 import TextAreaField from "../../molecules/textarea field/TextAreaField";
 import Box from "@material-ui/core/Box";
 import "./style.scss";
 
-
 const AddNewCategoryForm = () => {
   const dispatch = useDispatch();
+  const token = useSelector((state) => state.isLoggedIn.userLoggedIn.token);
 
   let addCategoryAction = (e) => {
     e.preventDefault();
 
     let data = Object.fromEntries(new FormData(e.target).entries());
-  
+
     fetch("/api/categories", {
       method: "POST",
       headers: {
-        "Accept": "application/json",
+        Authorization: token,
+        Accept: "application/json",
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify(data),
-    }).then(res => res.json()).then(json => dispatch(addCategory(json)))
-     
-    e.target.reset();
+    })
+      .then(ErrorFetchHandler)
+      .then((json) => {
+        dispatch(addCategory(json));
+        e.target.reset();
+      })
+      .catch(error => console.log(error));
   };
 
   return (
     <div className="modal--form">
       <h3 className="form-title">Add New Category</h3>
       <span className="form-title-small">Add category for the products</span>
-      <form onSubmit={addCategoryAction} className="category--form" id="add-product">
+      <form
+        onSubmit={addCategoryAction}
+        className="category--form"
+        id="add-product"
+      >
         <Box display="flex" flexDirection="column" p={1}>
           <InputField
             field={{ _uid: "name", label: "Name" }}
@@ -53,7 +62,7 @@ const AddNewCategoryForm = () => {
                 document
                   .querySelector(".modal--form")
                   .classList.remove("modal--form--show");
-                  document.querySelector(".category--form").reset();
+                document.querySelector(".category--form").reset();
               }}
               className="product__submit cancel-btn"
             >

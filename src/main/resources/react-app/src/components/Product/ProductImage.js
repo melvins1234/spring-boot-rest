@@ -1,5 +1,4 @@
 export const ProductImage = (props) => {
-  console.log(props.image);
   const addDefaultSrc = (e) => {
     e.target.src = props.image[0].image;
   };

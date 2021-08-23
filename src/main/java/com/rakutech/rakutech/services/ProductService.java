@@ -47,4 +47,8 @@ public class ProductService {
 		return productRepository.findAll();
 	}
 	
+	public Optional<List<Product>> categoriesList(String name){
+		return productRepository.findByCategory(name);
+	}
+	
 }
