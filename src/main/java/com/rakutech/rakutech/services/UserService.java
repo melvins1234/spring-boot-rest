@@ -25,11 +25,12 @@ public class UserService {
 		return userRepository.findById(id);
 	}
 	
-	public void deleteProduct(long id) {
+	public void deleteUser(long id) {
 		userRepository.deleteById(id);
 	}
 	
-	public List<User> productList(){
-		return userRepository.findAll();
+	public Optional<List<User>> userList(){
+//		return userRepository.findAll();
+		return userRepository.getAllUsersNotAdmin();
 	}
 }

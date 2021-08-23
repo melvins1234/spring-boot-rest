@@ -5,3 +5,17 @@ export const addUser = (value) => {
     }
 }
 
+export const loadUser = (value) => {
+    return {
+        type: 'load-user',
+        payload: value
+    }
+}
+
+export const deleteUser = (value) => {
+    return {
+        type: 'delete-user',
+        payload: value
+    }
+}
+

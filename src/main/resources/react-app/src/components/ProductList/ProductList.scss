@@ -66,11 +66,13 @@
   font-size: 0.9em;
   display: flex;
   flex-wrap: wrap;
+  padding-top: 60px;
+  background: #f6f7f8;
   &__filter {
     flex: 1 1 25%;
     & > nav,
     & > section {
-      background-color: #f6f7f8;
+      background-color: #fff;
       border-radius: 5px;
       padding: 10px 20px;
       margin: 20px;
@@ -298,6 +300,7 @@
   }
   &__products {
     flex: 1 4 75%;
+    background: #fff;
     & > section {
       margin: 20px 0;
       border-radius: 5px;
@@ -474,7 +477,7 @@
             margin-right: 15px;
             z-index: 2;
 
-            &.fave{
+            &.fave {
               color: #fc2828;
             }
           }

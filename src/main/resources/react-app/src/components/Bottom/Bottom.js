@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import { BottomHeader } from "./BottomHeader";
+import { ErrorFetchHandler } from "../ErrorFetchHandler/ErrorFetchHandler";
 import { Card } from "../Card/Card";
 
 import "./Bottom.scss";
@@ -20,11 +22,15 @@ export const Bottom = () => {
               <Card
                 key={e.id}
                 id={e.id}
-                image={e.productImages.map(e => e.image)[0]}
+                image={
+                  e.productImages.map((e) => e.image)[
+                    Math.floor(Math.random() * (e.productImages.length - 0) + 0)
+                  ]
+                }
                 product={e.name}
                 price={e.price}
-                discountedPrice={e.discount}
-                stars={e.stars}
+                discountedPrice={e.price}
+                stars={Math.floor(Math.random() * (5 - 0) + 1)}
                 hotProduct={e.hotProduct}
                 quantity={e.quantity}
                 favorite={e.favorite}
@@ -40,6 +46,17 @@ export const Bottom = () => {
 };
 
 export const BottomProduct = () => {
+  let location = useLocation();
+  const [product] = useState(location.state ? location.state.data : {});
+  const [relatedProduct, setRelatedProduct] = useState([]);
+  const category = product.categories[0].name;
+  useEffect(() => {
+    fetch(`/api/products/categories/${category}`)
+      .then(ErrorFetchHandler)
+      .then((json) => setRelatedProduct(json));
+    return;
+  }, []);
+  console.log(relatedProduct);
   return (
     <section id="bottom1" className="bottom1">
       <section className="wrapper">
@@ -48,7 +65,27 @@ export const BottomProduct = () => {
         </header>
 
         <article className="bottom1__products bottom1__products--margin">
-          <Card
+          {relatedProduct.map((e) => {
+            return(<Card
+              key={e.id}
+              id={e.id}
+              image={
+                e.productImages.map((e) => e.image)[
+                  Math.floor(Math.random() * (e.productImages.length - 0) + 0)
+                ]
+              }
+              product={e.name}
+              price={e.price}
+              discountedPrice={e.price}
+              stars={Math.floor(Math.random() * (5 - 0) + 1)}
+              hotProduct={e.hotProduct}
+              quantity={e.quantity}
+              favorite={e.favorite}
+              data={e}
+            />)
+          })}
+
+          {/* <Card
             product={"Apple MacBook Pro"}
             discountedPrice={"499"}
             price={"599"}
@@ -68,14 +105,7 @@ export const BottomProduct = () => {
             price={"599"}
             image={"macbook-pro.png"}
             stars={4}
-          />
-          <Card
-            product={"Apple MacBook Pro"}
-            discountedPrice={"499"}
-            price={"599"}
-            image={"macbook-pro.png"}
-            stars={4}
-          />
+          /> */}
         </article>
       </section>
     </section>

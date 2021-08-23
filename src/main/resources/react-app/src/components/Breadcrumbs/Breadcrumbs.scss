@@ -1,6 +1,5 @@
 .breadcrumbs{
     background: #F6F7F8;
-    margin-bottom: 60px;
     &__nav{
         display: block;
         margin: 0 auto;
@@ -30,6 +29,7 @@
         &--active{
             a{
                 color: #22262A;
+                pointer-events: none;
             }
         }
     }

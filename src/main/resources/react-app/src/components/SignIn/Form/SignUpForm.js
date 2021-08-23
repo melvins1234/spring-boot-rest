@@ -1,27 +1,24 @@
-import { useSelector } from "react-redux";
 import { Input, Button } from "../../InputField/InputField";
 import { EmailFieldErrorMessage } from "./EmailFieldErrorMessage";
 
 const SignUpForm = ({ setSuccessSignUp }) => {
-  const apiToken = useSelector((state) => state.token);
 
   const SignUpFunction = async (e) => {
     e.preventDefault();
 
     let data = Object.fromEntries(new FormData(e.target).entries());
-    console.log();
-    await fetch(`/api/users/${data.email}`, {
+    await fetch(`/api/user/${data.email}`, {
       method: "GET",
       headers: {
-        Authorization: apiToken,
         Accept: "application/json",
         "Content-Type": "application/json",
       },
     })
       .then((res) => {
-        if (!res.ok) {
-          data.roles = "USER";
-          console.log(data);
+        
+        // res.status == "200" ? console.log(res) : console.log(res.status)
+        if (res.status !== 200) {
+          data.roles = "CUSTOMER";
           fetch("/api/users", {
             method: "POST",
             headers: {
@@ -33,7 +30,7 @@ const SignUpForm = ({ setSuccessSignUp }) => {
           })
             .then(setSuccessSignUp(true))
             .then(e.target.reset());
-        } else EmailFieldErrorMessage(e, "Email is already in use.");
+        } else EmailFieldErrorMessage(e, "Email is already in use.", "email");
       })
       .catch((err) => {
         console.log(err);

@@ -15,11 +15,12 @@ import "./style.scss";
 const AddProducts = () => {
   let [productImages, setProductImages] = useState([]);
   const categories = useSelector((state) => state.category);
+  const token = useSelector((state) => state.isLoggedIn.userLoggedIn.token);
   const dispatch = useDispatch();
 
   let addProduct = (event) => {
     event.preventDefault();
-    let images = new Array();
+    let images = [];
     let data = Object.fromEntries(new FormData(event.target).entries());
     delete data.fileToUpload;
     data = {
@@ -33,6 +34,9 @@ const AddProducts = () => {
 
       fetch("/api/products/upload", {
         method: "POST",
+        headers: {
+          Authorization: token,
+        },
         body: formData,
       })
         .then((response) => response.json())
@@ -48,6 +52,7 @@ const AddProducts = () => {
       fetch("/api/products", {
         method: "POST",
         headers: {
+          Authorization: token,
           Accept: "application/json",
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",
@@ -61,10 +66,10 @@ const AddProducts = () => {
               (e) => e.name === document.querySelector(".product__select").value
             ),
           ];
-          console.log(JSON.stringify(json));
           fetch(`/api/products/${json.id}`, {
             method: "PUT",
             headers: {
+              Authorization: token,
               Accept: "application/json",
               "Content-Type": "application/json",
               "Access-Control-Allow-Origin": "*",
@@ -72,7 +77,11 @@ const AddProducts = () => {
             body: JSON.stringify(json),
           })
             .then((res) => res.json())
-            .then((json) => dispatch(addProductAction(json)));
+            .then((json) => {
+              dispatch(addProductAction(json))
+              event.target.reset();
+              setProductImages([])
+            });
         });
     }, 500);
   };
@@ -137,6 +146,7 @@ const AddProducts = () => {
                       data-file={val.name}
                       key={index}
                       src={`${URL.createObjectURL(val)}`}
+                      alt={val.name}
                     />
                   );
                 })}

@@ -1,11 +1,12 @@
+import { NavLink } from "react-router-dom";
 import "./style.scss";
 
 const Logo = () => {
   return (
     <h1 className="header--logo">
-      <a href="#">
+      <NavLink to="/">
         RAKU<span className="header--logo--red">TECH</span> ADMIN
-      </a>
+      </NavLink>
     </h1>
   );
 };

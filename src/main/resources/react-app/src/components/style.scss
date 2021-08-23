@@ -77,6 +77,8 @@ input, textarea, select{-webkit-appearance: none;}
 mark {background-color: transparent;color:inherit;}
 /* end reset */
 
+input[type="text"], select { text-transform: capitalize;}
+
 .wrapper {
     width: 1170px;
     max-width: 100%;

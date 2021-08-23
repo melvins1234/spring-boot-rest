@@ -27,6 +27,8 @@ public class User {
     private String phone;
     @Column(name="role")
     private String roles;
+    private String country;
+    private String image;
     
 	public Long getId() {
 		return id;
@@ -82,12 +84,24 @@ public class User {
 	public void setRoles(String roles) {
 		this.roles = roles;
 	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", password=" + password + ", fullName=" + fullName
 				+ ", billingAddress=" + billingAddress + ", defaultShippingAddress=" + defaultShippingAddress
 				+ ", secondaryShippingAddress=" + secondaryShippingAddress + ", phone=" + phone + ", roles=" + roles
-				+ "]";
+				+ ", country=" + country + ", image=" + image + "]";
 	}
 	
 }

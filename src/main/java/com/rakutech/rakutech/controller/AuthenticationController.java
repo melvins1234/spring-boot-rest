@@ -9,10 +9,12 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,23 +44,13 @@ public class AuthenticationController {
 	public UserDTO log(@RequestParam("email") String email, 
 					@RequestParam("password") String pwd) {
 		
-		UserDTO userDTO = new UserDTO();
+		User user = userRepository.findByEmailAddressPass(email, pwd);
+		String token = getJWTToken(email);
+		UserDTO userDTO = new UserDTO(user.getId(), user.getEmail(), user.getPassword(), user.getFullName(), user.getBillingAddress(),
+				user.getDefaultShippingAddress(), user.getSecondaryShippingAddress(), user.getPhone(), user.getRoles(), user.getCountry(),
+				user.getImage(), token);
 		
-		userRepository.findAll().forEach(e -> {
-			if(e.getEmail().equals(email) && e.getPassword().equals(pwd)) {
-				String token = getJWTToken(email);
-				userDTO.setId(e.getId());
-				userDTO.setEmail(email);
-				userDTO.setPassword(pwd);
-				userDTO.setFullName(e.getFullName());
-				userDTO.setBillingAddress(e.getBillingAddress());
-				userDTO.setDefaultShippingAddress(e.getDefaultShippingAddress());
-				userDTO.setSecondaryShippingAddress(e.getSecondaryShippingAddress());
-				userDTO.setPhone(e.getPhone());
-				userDTO.setRoles(e.getRoles());
-				userDTO.setToken(token);
-			}
-		});
+		System.out.println(userDTO);
 		
 		return userDTO;
 	}
@@ -91,7 +83,7 @@ public class AuthenticationController {
                 .body(result);
     }
     
-	@GetMapping("/api/users/{value}")
+	@GetMapping("/api/user/{value}")
 	ResponseEntity<?> getUserByEmail(@PathVariable String value) throws NumberFormatException{
 		Optional<User> user;
 		if(value.contains("@")) 
@@ -102,4 +94,16 @@ public class AuthenticationController {
 		return user.map(response -> ResponseEntity.ok().body(response))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	}
+	
+	@GetMapping("/api/users")
+	ResponseEntity<Optional<List<User>>> users() {
+		Optional<List<User>> userList = userService.userList();
+		 
+        return new ResponseEntity<Optional<List<User>>>(userList, new HttpHeaders(), HttpStatus.OK); 
+	}
+    @DeleteMapping("/api/users/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable Long id) {
+    	userService.deleteUser(id);
+        return ResponseEntity.ok().build();
+    }
 }

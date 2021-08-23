@@ -1,5 +1,6 @@
 package com.rakutech.rakutech.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,6 +14,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	Optional<User> findByEmailAddress(@Param("email") String email);
 	
 	@Query("SELECT u from User u WHERE u.email = :email AND u.password = :password")
-	Optional<User> findByEmailAddressPass(@Param("email") String email, 
+	User findByEmailAddressPass(@Param("email") String email, 
 			@Param("password") String password);
+	
+	@Query("SELECT u from User u Where u.roles != 'ADMIN'")
+	Optional<List<User>> getAllUsersNotAdmin();
 }

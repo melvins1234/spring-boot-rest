@@ -65,7 +65,6 @@ public class ProductController {
 	
     @PostMapping("")
     ResponseEntity<Product> createProduct(@RequestBody Product product) throws URISyntaxException, IOException {
-    	System.out.println(product);
         Product result = productService.saveProduct(product);
         return ResponseEntity.created(new URI("/products/group/" + result.getId()))
                 .body(result);
@@ -116,4 +115,14 @@ public class ProductController {
     	productService.deleteProduct(id);
         return ResponseEntity.ok().build();
     }
+    
+	@GetMapping("/categories/{name}")
+	ResponseEntity<?> getProduct(@PathVariable String name){
+		Optional<List<Product>> product = productService.categoriesList(name);
+		if (!product.isPresent()) {
+            return ResponseEntity.unprocessableEntity().build();
+        }
+		return product.map(response -> ResponseEntity.ok().body(response))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));	
+	}
 }

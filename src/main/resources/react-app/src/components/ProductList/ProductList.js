@@ -12,8 +12,6 @@ import Accessories from "./Accessories/Accessories";
 import "./ProductList.scss";
 
 export const ProductList = () => {
-
-
   let categoryNav = [
       { category: "Apple Car", stock: 2, path: "#", active: "" },
       {
@@ -36,26 +34,27 @@ export const ProductList = () => {
     ];
 
   return (
-    <section className="product-listing wrapper">
-      <aside className="product-listing__filter">
-        <ProductCategory key="1" nav={categoryNav} />
-        <ProductPrice key="2" />
-        <ProductColorPicker key="3" />
-        <ProductCategory key="5" nav={barndNav} />
-      </aside>
-      <section className="product-listing__products">
-        <ProductListBanner />
-        <ProductListContetNav />
+    <section className="product-listing ">
+      <div className="wrapper">
+        <aside className="product-listing__filter">
+          <ProductCategory key="1" nav={categoryNav} />
+          <ProductPrice key="2" />
+          <ProductColorPicker key="3" />
+          <ProductCategory key="5" nav={barndNav} />
+        </aside>
+        <section className="product-listing__products">
+          <ProductListBanner />
+          <ProductListContetNav />
 
-        <Route path="/store">
-          <Store />
-        </Route>
+          <Route path="/store">
+            <Store />
+          </Route>
 
-        <Route path="/accessories">
-          <Accessories />
-        </Route>
-
-      </section>
+          <Route path="/accessories">
+            <Accessories />
+          </Route>
+        </section>
+      </div>
     </section>
   );
 };

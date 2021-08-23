@@ -47,10 +47,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable()
 		.addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
 		.authorizeRequests()
-		.antMatchers(HttpMethod.POST, "/auth").permitAll()
-		.antMatchers("/resources/**","/images/**","/css/**","/fonts/**","/js/**","/api/**").permitAll()
-		.antMatchers(HttpMethod.POST, "/api/products").permitAll()
-		.antMatchers(HttpMethod.POST, "/api/categories").permitAll()
+		.antMatchers("/resources/**","/images/**","/css/**","/fonts/**","/js/**", "/api/user/**").permitAll()
+		.antMatchers(HttpMethod.GET,"/api/products", "/api/categories", "/api/images/**", "/api/products/categories/**").permitAll()
+		.antMatchers(HttpMethod.POST, "/auth", "/api/users").permitAll()
+		.antMatchers(HttpMethod.PUT, "/api/products/**").permitAll()
 		.anyRequest().authenticated();
 	}
     
