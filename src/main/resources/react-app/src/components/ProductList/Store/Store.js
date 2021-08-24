@@ -22,8 +22,9 @@ const Store = () => {
             discountedPrice={e.price}
             stars={Math.floor(Math.random() * (5 - 0) + 1)}
             hotProduct={e.hotProduct}
-            quantity={e.quantity}
+            quantity={1}
             favorite={e.favorite}
+            data={e}
           />
         );
       })}

@@ -40,8 +40,7 @@ export const SignIn = () => {
         document.querySelector(".sign-up__invalid-feedback").remove();
       } else if (e.target.id === "modal") {
         setSuccessSignUp(false);
-      } else if (
-        e.target.id === "successful-registered__success") {
+      } else if (e.target.id === "successful-registered__success") {
         setSuccessSignUp(false);
       }
     });
@@ -69,7 +68,8 @@ export const SignIn = () => {
           <section className="sign-up__description">
             <h1 className="sign-up__company-name">
               <NavLink to="/">
-                RAKU<span className="sign-up__company-name--color">TECH</span>
+                ONESTOP
+                <span className="sign-up__company-name--color">TECH</span>
               </NavLink>
             </h1>
             <p className="sign-up__company-desc">

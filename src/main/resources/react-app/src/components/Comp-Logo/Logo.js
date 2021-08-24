@@ -5,7 +5,7 @@ const CompanyLogo = () => {
         
         <div className="header--brand">
             <h1>
-            <Link to="/">RAKU<span>TECH</span></Link>
+            <Link to="/">ONESTOP<span>TECH</span></Link>
             </h1>
         </div>
     )

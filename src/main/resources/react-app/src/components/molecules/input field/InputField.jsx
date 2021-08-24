@@ -10,7 +10,8 @@ const InputField = ({
   required,
   placeholder,
   className,
-  width
+  width,
+  readonly
 }) => {
   return (
     <div key={field._uid} className="product__input-group">
@@ -20,6 +21,8 @@ const InputField = ({
         type={type}
         required={required}
         width={width}
+        value={value}
+        readonly={readonly}
       />
     </div>
   );

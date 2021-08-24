@@ -3,8 +3,9 @@ import "./style.scss";
 let images = [];
 const UploadBox = ({ setProductImages }) => {
   let imageList = (event) => {
-    if(event.target.files.length <= 3 && images.length < 3) images = [...images, ...Array.from(event.target.files)];
-    else event.target.value = null
+    if (event.target.files.length <= 3 && images.length < 3)
+      images = [...images, ...Array.from(event.target.files)];
+    else event.target.value = null;
     setProductImages(images);
   };
   return (

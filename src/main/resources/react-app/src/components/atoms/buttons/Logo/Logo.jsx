@@ -5,7 +5,7 @@ const Logo = () => {
   return (
     <h1 className="header--logo">
       <NavLink to="/">
-        RAKU<span className="header--logo--red">TECH</span> ADMIN
+      ONESTOP<span className="header--logo--red">TECH</span> ADMIN
       </NavLink>
     </h1>
   );

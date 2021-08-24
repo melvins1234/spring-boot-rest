@@ -8,12 +8,13 @@ const SelectField = ({
     value,
     required,
     className,
-    width
+    width,
+    selected
   }) => {
   return (
     <div key={field._uid} className="product__input-group">
       <Label field={field} className={className} />
-      <Select width={width} data={value} required={required}/>
+      <Select width={width} data={value} required={required} selected={selected} />
     </div>
   );
 };

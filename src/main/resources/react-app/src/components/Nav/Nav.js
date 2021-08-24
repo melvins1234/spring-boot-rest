@@ -9,7 +9,7 @@ export const Nav = () => {
   let state = useSelector((state) => state.itemsInCart);
   const toggleNavHandler = () => {
     let nav = document.querySelector(".header__nav-bar");
-    nav.classList.toggle('header__nav-bar--show')
+    nav.classList.toggle("header__nav-bar--show");
   };
   return (
     <nav className="header__main-nav header__mobile">
@@ -25,7 +25,7 @@ export const Nav = () => {
         <div className="header--brand header__mobile--logo">
           <h1>
             <Link to="/">
-              RAKU<span>TECH</span>
+              ONESTOP<span>TECH</span>
             </Link>
           </h1>
         </div>
