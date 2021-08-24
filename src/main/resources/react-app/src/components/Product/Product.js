@@ -101,6 +101,7 @@ export let Product = (props) => {
   let location = useLocation();
   let history = useHistory();
   const [product] = useState(location.state ? location.state.data : {});
+  const [stars] = useState(location.state ? location.state.stars : {});
   if (Object.entries(product).length === 0) history.push("/");
   return (
     <section id="main" className="main">
@@ -111,13 +112,15 @@ export let Product = (props) => {
             <ProductDetails
               key={product.id}
               id={product.id}
-              image={product.image}
+              image={product.productImages.map((e) => e.image)[
+                Math.floor(Math.random() * (product.productImages.length - 0) + 0)
+              ]}
               product={product.name}
               price={product.price}
-              discountedPrice={product.discountedPrice}
-              stars={product.stars}
+              discountedPrice={product.price}
+              stars={stars}
               hotProduct={product.hotProduct}
-              quantity={product.quantity}
+              quantity={1}
               favorite={product.favorite}
             />
           </section>

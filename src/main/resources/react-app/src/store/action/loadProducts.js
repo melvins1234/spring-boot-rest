@@ -18,3 +18,10 @@ export const removeProductAction = (value) => {
         payload: value
     }
 }
+
+export const updateProductAction = (value) => {
+    return {
+        type: 'update-product',
+        payload: value
+    }
+}

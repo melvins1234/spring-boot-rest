@@ -8,7 +8,7 @@ export const Footer = (key) => {
       <div className="footer__top-outer-container">
         <div className="footer__top wrapper">
           <div className="footer__top--brand-description">
-            <h3 className="footer__top--title">RAKUTECH</h3>
+            <h3 className="footer__top--title">ONESTOPTech</h3>
             <span>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text

@@ -35,7 +35,7 @@ const AddNewCategoryForm = () => {
   };
 
   return (
-    <div className="modal--form">
+    <div className="modal--form modal--form--category">
       <h3 className="form-title">Add New Category</h3>
       <span className="form-title-small">Add category for the products</span>
       <form

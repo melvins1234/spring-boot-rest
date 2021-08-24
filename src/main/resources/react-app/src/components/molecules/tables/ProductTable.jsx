@@ -20,6 +20,7 @@ import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined"
 
 import Pagination from "../../Pagination/Pagination";
 import ModalDelete from "../../organisms/Modal/ModalDelete";
+import AddProductsForm from "../../organisms/Form/AddProductsForm";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -106,11 +107,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ProductTable = () => {
+const ProductTable = ({}) => {
   const [selectedRows, setSelectedRows] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [open, setOpen] = useState(false);
   const [postsPerPage] = useState(10);
+  const [showModal, setShowModal] = useState(false);
+  const [editProduct, setEditProduct] = useState([]);
 
   const products = useSelector((state) => state.products);
 
@@ -137,14 +140,9 @@ const ProductTable = () => {
     let newSelectedProductds = [];
 
     if (selectedIndex === -1) {
-      newSelectedProductds = newSelectedProductds.concat(
-        selectedRows,
-        id
-      );
+      newSelectedProductds = newSelectedProductds.concat(selectedRows, id);
     } else if (selectedIndex === 0) {
-      newSelectedProductds = newSelectedProductds.concat(
-        selectedRows.slice(1)
-      );
+      newSelectedProductds = newSelectedProductds.concat(selectedRows.slice(1));
     } else if (selectedIndex === selectedRows.length - 1) {
       newSelectedProductds = newSelectedProductds.concat(
         selectedRows.slice(0, -1)
@@ -159,9 +157,23 @@ const ProductTable = () => {
     setSelectedRows(newSelectedProductds);
   };
 
+  const modalHandler = () => {
+
+  }
+
   return (
     <section>
-      {open ? <ModalDelete setOpen={setOpen} infoToDelete={selectedRows} setSelectedRows={setSelectedRows} from={'Product'}/> : ""}
+      {showModal ?  <AddProductsForm editProduct={editProduct} setShowModal={setShowModal} /> : null}
+      {open ? (
+        <ModalDelete
+          setOpen={setOpen}
+          infoToDelete={selectedRows}
+          setSelectedRows={setSelectedRows}
+          from={"Product"}
+        />
+      ) : (
+        ""
+      )}
       <Toolbar>
         {selectedRows.length > 0 ? (
           <Typography
@@ -242,9 +254,9 @@ const ProductTable = () => {
                 <TableCell>{row.name}</TableCell>
                 <TableCell>{row.price}</TableCell>
                 <TableCell>{row.quantity}</TableCell>
-                <TableCell>{row.categories[0].name}</TableCell>
+                <TableCell>{row.categories.length > 0? row.categories[0].name : ''}</TableCell>
                 <TableCell className={classes.actionColumn}>
-                  <span>
+                  <span onClick={() => {setShowModal(true); setEditProduct(row)}}>
                     <EditOutlinedIcon />
                   </span>
                   {/* <span onClick={() => handleOpen(row.id)}>

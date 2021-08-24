@@ -1,16 +1,25 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
-import Tooltip from "@material-ui/core/Tooltip";
-import IconButton from "@material-ui/core/IconButton";
+import {
+  Box,
+  Container,
+  Grid,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  TextField,
+  IconButton,
+  Tooltip,
+} from "@material-ui/core";
+
+import AccountProfile from './AccountProfile';
+import AccountProfileDetails from './AccountProfileDetails';
 
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
@@ -56,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const UserListTable = () => {
+const UserListTable = ({showAdd, setShow}) => {
   const users = useSelector((state) => state.users);
   const [open, setOpen] = useState(false);
   const [clicked, setClicked] = useState(false);
@@ -70,12 +79,21 @@ const UserListTable = () => {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = users.slice(indexOfFirstPost, indexOfLastPost);
   //
-
   const classes = useStyles();
+
+  console.log(showAdd)
 
   return (
     <section>
-      {open ? <ModalDelete setOpen={setOpen} infoToDelete={infoToDelete} from={'User'}/> : ""}
+      {open ? (
+        <ModalDelete
+          setOpen={setOpen}
+          infoToDelete={infoToDelete}
+          from={"User"}
+        />
+      ) : (
+        ""
+      )}
       <TableContainer component={Paper}>
         <Table
           className={classes.table}
@@ -156,8 +174,34 @@ const UserListTable = () => {
         setCurrentPage={setCurrentPage}
         className="product-pagination"
       ></Pagination>
+      
+      {showAdd ? <UserForm /> : null}
+      
     </section>
   );
 };
 
 export default UserListTable;
+
+export const UserForm = () => {
+  return (
+    <Box
+      sx={{
+        backgroundColor: "background.default",
+        minHeight: "100%",
+        py: 3,
+      }}
+    >
+      <Container maxWidth="lg">
+        <Grid container spacing={3}>
+          <Grid item lg={4} md={6} xs={12}>
+            <AccountProfile />
+          </Grid>
+          <Grid item lg={8} md={6} xs={12}>
+            <AccountProfileDetails />
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
+  );
+};

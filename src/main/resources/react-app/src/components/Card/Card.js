@@ -26,7 +26,6 @@ export const Card = (props) => {
 
   const addToCartHandler = (data) => {
     setAddToCart(true);
-
     dispatch(toCart(data));
     dispatch(itemsInCart());
 
@@ -41,10 +40,10 @@ export const Card = (props) => {
   };
 
   return (
-    <div key={props.product} className={`bottom1__card ${props.hotProduct}`}>
+    <div key={props.product} className={`bottom1__card ${props.hotProduct}`} style={props.style}>
       <NavLink
         className="bottom1__card__back--link"
-        to={{ pathname: "/product", state: { data: props.data } }}
+        to={{ pathname: "/product", state: { data: props.data, stars: props.stars } }}
       ></NavLink>
       <div className="bottom1__card__flip">
         <div className="bottom1__card__inner">

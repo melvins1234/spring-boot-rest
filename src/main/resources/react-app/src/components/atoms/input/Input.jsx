@@ -9,6 +9,7 @@ const Input = ({
   placeholder,
   className,
   width,
+  readonly
 }) => {
   return (
     <input
@@ -16,10 +17,11 @@ const Input = ({
       type={type || field.component}
       id={field._uid}
       name={field._uid}
-      value={value}
+      defaultValue={value}
       required={required}
       placeholder={placeholder}
       className="product__input--text"
+      readOnly={readonly}
     />
   );
 };

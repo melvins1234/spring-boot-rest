@@ -16,6 +16,7 @@ import { Star } from "../Star/Star";
 
 const ProductContentCard = (props) => {
   const [favoriteProd, setFavoriteProd] = useState(props.favorite);
+  let dispatch = useDispatch();
 
   const truncate = (str, n) => {
     return str.length > n ? str.substr(0, n - 1) + "..." : str;
@@ -28,7 +29,6 @@ const ProductContentCard = (props) => {
     else dispatch(unFavProd(data));
   };
 
-  let dispatch = useDispatch();
   const addToCartHandler = (data) => {
     dispatch(toCart(data));
     dispatch(
@@ -41,12 +41,12 @@ const ProductContentCard = (props) => {
     dispatch(itemsTotalInCart());
   };
 
-
+console.log(props)
   return (
     <section className="product-listing__products__card">
       <NavLink
         className="product-listing__products__card--link"
-        to={{ pathname: "/product", state: { data: props } }}
+        to={{ pathname: "/product", state: { data: props.data, stars: props.stars } }}
       />
       <section className="product-listing__products__card--image">
         <span>HOT</span>

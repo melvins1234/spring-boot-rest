@@ -1,7 +1,7 @@
 import Label from "../../atoms/label/Label";
 import TextArea from "../../atoms/textarea/TextArea";
 
-const TextAreaField = ({ field, required, className, width, height }) => {
+const TextAreaField = ({ field, required, className, width, height, value }) => {
   return (
     <div key={field._uid} style={{width: `${width}`}} className="product__input-group">
       <Label field={field} className={className} />
@@ -10,6 +10,7 @@ const TextAreaField = ({ field, required, className, width, height }) => {
         width={width}
         height={height}
         required={required}
+        value={value}
       />
     </div>
   );

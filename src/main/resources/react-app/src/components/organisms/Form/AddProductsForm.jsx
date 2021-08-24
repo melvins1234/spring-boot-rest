@@ -1,19 +1,23 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { addProductAction } from "../../../store/action/loadProducts";
+import { addProductAction, updateProductAction } from "../../../store/action/loadProducts";
 
 import InputField from "../../molecules/input field/InputField";
 import SelectField from "../../molecules/select field/SelectField";
 import TextAreaField from "../../molecules/textarea field/TextAreaField";
-import UploadBox from "../../molecules/upload box/UploadBox";
+import Upload from "../../atoms/icons/Upload Icon/Upload";
 import SaveProductButton from "../../atoms/buttons/Submit/SaveProductButton";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import Box from "@material-ui/core/Box";
 
 import "./style.scss";
 
-const AddProducts = () => {
+const AddProducts = ({ setShowModal, editProduct }) => {
   let [productImages, setProductImages] = useState([]);
+  let [editProductImages, setEditProductImages] = useState(
+    editProduct ? editProduct.productImages : []
+  );
   const categories = useSelector((state) => state.category);
   const token = useSelector((state) => state.isLoggedIn.userLoggedIn.token);
   const dispatch = useDispatch();
@@ -78,21 +82,64 @@ const AddProducts = () => {
           })
             .then((res) => res.json())
             .then((json) => {
-              dispatch(addProductAction(json))
+              dispatch(addProductAction(json));
               event.target.reset();
-              setProductImages([])
+              setProductImages([]);
             });
         });
     }, 500);
   };
 
+  let imageList = (event) => {
+    if (event.target.files.length <= 3 && productImages.length < 3)
+      setProductImages([...productImages, ...Array.from(event.target.files)]);
+    else event.target.value = null;
+  };
+
+  let updateProduct = (event, id) => {
+    event.preventDefault();
+    let data = Object.fromEntries(new FormData(event.target).entries());
+    delete data.fileToUpload;
+    data = {
+      ...data,
+      productImages: editProductImages,
+      date: editProduct.date,
+      categories: [categories.find(
+        (e) => e.name === document.querySelector(".product__select").value
+      )],
+    };
+
+    fetch(`/api/products/${id}`, {
+      method: "PUT",
+      headers: {
+        Authorization: token,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        dispatch(updateProductAction(json));
+        event.target.reset();
+        setEditProductImages([]);
+      });
+  };
+
   return (
     <div className="modal--form--product">
-      <h3 className="form-title">Add New Product</h3>
+      <h3 className="form-title">{editProduct ? 'Update Product' : 'Add New Product'} </h3>
       <span className="form-title-small">
-        Add some information for the product you want to create.
+      {editProduct ? 'Edit information for the product you want to update.' : 'Add some information for the product you want to create.'}
+        
       </span>
-      <form id="add-product" onSubmit={addProduct}>
+      <form
+        id="add-product"
+        onSubmit={(event) =>
+          editProduct ? updateProduct(event, editProduct.id) : addProduct(event)
+        }
+      >
         <Box display="flex" flexDirection="column" p={1}>
           <Box
             flexDirection="column"
@@ -105,12 +152,14 @@ const AddProducts = () => {
               type="text"
               className="product__input"
               required="required"
+              value={editProduct ? editProduct.name : ""}
             />
             <SelectField
               field={{ _uid: "categories", label: "Category" }}
               value={categories}
               className="product__input"
               required="required"
+              selected={editProduct && editProduct.categories.length > 0 ? editProduct.categories[0].name : ''}
             />
             <Box display="flex" flexGrow={1} justifyContent="space-between">
               <InputField
@@ -119,6 +168,7 @@ const AddProducts = () => {
                 width="100"
                 className="product__input"
                 required="required"
+                value={editProduct ? editProduct.weight : ""}
               />
               <InputField
                 field={{ _uid: "quantity", label: "Quantity" }}
@@ -126,6 +176,7 @@ const AddProducts = () => {
                 width="100"
                 className="product__input"
                 required="required"
+                value={editProduct ? editProduct.quantity : ""}
               />
               <InputField
                 field={{ _uid: "price", label: "Price" }}
@@ -133,24 +184,89 @@ const AddProducts = () => {
                 className="product__input"
                 required="required"
                 width="100"
+                value={editProduct ? editProduct.price : ""}
               />
             </Box>
 
             <Box display="flex" flexGrow={10} flexDirection="column">
               <label className="product__input">Upload Images</label>
               <Box display="flex" flexGrow={1}>
-                {productImages.map((val, index) => {
-                  return (
-                    <img
-                      style={{ width: "80px", height: "80px", margin: "5px" }}
-                      data-file={val.name}
-                      key={index}
-                      src={`${URL.createObjectURL(val)}`}
-                      alt={val.name}
-                    />
-                  );
-                })}
-                <UploadBox setProductImages={setProductImages} />
+                {editProduct && editProductImages.length > 0
+                  ? editProductImages.map((val, index) => {
+                      return (
+                        <section
+                          key={index}
+                          className="imageSection"
+                          style={{ position: "relative" }}
+                        >
+                          <HighlightOffIcon
+                            className="closeIcon"
+                            onClick={() =>
+                              setEditProductImages(
+                                editProductImages.filter(
+                                  (item, imageIndex) => imageIndex !== index
+                                )
+                              )
+                            }
+                          />
+                          <img
+                            style={{
+                              width: "80px",
+                              height: "80px",
+                              margin: "5px",
+                              pointerEvents: "none",
+                            }}
+                            data-file={val.name}
+                            key={index}
+                            src={`${val.image}`}
+                            alt={val.name}
+                          />
+                        </section>
+                      );
+                    })
+                  : productImages.map((val, index) => {
+                      return (
+                        <section
+                          key={index}
+                          className="imageSection"
+                          style={{ position: "relative" }}
+                        >
+                          <HighlightOffIcon
+                            className="closeIcon"
+                            onClick={() =>
+                              setProductImages(
+                                productImages.filter(
+                                  (item, imageIndex) => imageIndex !== index
+                                )
+                              )
+                            }
+                          />
+                          <img
+                            style={{
+                              width: "80px",
+                              height: "80px",
+                              margin: "5px",
+                              pointerEvents: "none",
+                            }}
+                            data-file={val.name}
+                            key={index}
+                            src={`${URL.createObjectURL(val)}`}
+                            alt={val.name}
+                          />
+                        </section>
+                      );
+                    })}
+                <div className="product__upload--box">
+                  <Upload /> Upload
+                  <input
+                    onChange={imageList}
+                    type="file"
+                    name="fileToUpload"
+                    accept="image/gif, image/jpeg, image/png"
+                    className="product__upload--fileToUpload"
+                    multiple
+                  />
+                </div>
               </Box>
             </Box>
           </Box>
@@ -161,21 +277,20 @@ const AddProducts = () => {
             className="product__input"
             width="100%"
             height="80"
+            value={editProduct ? editProduct.description : ""}
           />
         </Box>
         <Box display="flex" flexGrow={10} p={1} justifyContent="space-around">
           <span
             onClick={() => {
-              document
-                .querySelector(".modal--form--product")
-                .classList.remove("modal--form--product--show");
+              setShowModal(false);
               document.querySelector("#add-product").reset();
             }}
             className="product__submit cancel-btn"
           >
             Cancel
           </span>
-          <SaveProductButton type="submit" value="Publish" />
+          <SaveProductButton type="submit" value={editProduct ? 'Update' : 'Publish'} />
         </Box>
       </form>
     </div>
