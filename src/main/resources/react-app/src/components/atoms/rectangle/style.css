@@ -1,0 +1,18 @@
+.nav__header--rectangle {
+  color: #fff;
+  background: #fd2e2e;
+  width: 60px;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 8px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=style.css.map */

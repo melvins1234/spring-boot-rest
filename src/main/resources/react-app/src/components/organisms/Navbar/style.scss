@@ -1,0 +1,29 @@
+.nav {
+  width: 390px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  &__tab {
+    color: #52575d;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    height: 44px;
+    border-radius: 20px;
+    padding: 0 10px;
+    width: 330px;
+    max-width: 100%;
+
+    // &:hover {
+    //   color: #fd2e2e;
+    //   cursor: pointer;
+    //   background: rgba($color: #fd2e2e, $alpha: 0.2);
+    // }
+  }
+  &--icon {
+    margin-right: 17px;
+  }
+}

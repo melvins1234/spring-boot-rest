@@ -1,0 +1,124 @@
+.bottom4{
+    margin-bottom: 141px;
+    & > .wrapper{
+        flex-direction: column;
+    }
+
+    &__title{
+        font-weight: 600;
+        font-size: 30px;
+        line-height: 36px;
+        text-transform: uppercase;
+        padding: 71px 0 63px;
+        text-align: center;
+    }
+
+    &__news{
+        display: flex;
+
+        &--upper,  &--lower{
+            padding-bottom: 70px;
+        }
+
+        &__image{
+            margin-right: 20px;
+        }
+
+        &__box{
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            width: 390px;
+            max-width: 100%;
+
+            img{
+                width: 160px;
+                height: auto;
+            }
+        }
+
+        &__date{
+            color: #C1C8CE;
+            display: block;
+        }
+
+        &__title{
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+            line-height: 22px;
+            
+            &--font{
+                font-size: 14px;
+                line-height: 17px;
+            }
+        }
+
+        &__content{
+            line-height: 24px;
+        }
+
+        &--lower{
+            .bottom4__news__title{
+                font-weight: 600;
+                margin-bottom: 13px;
+            }
+            .fas{
+                color: #FFC600;
+                &:last-of-type{
+                    color: #C1C8CE;
+                    margin-bottom: 13px;
+                }
+            }
+
+            .bottom1__card__price{
+                &:first-child{
+                    padding-left: 0;
+                }
+            }
+        }
+    }
+
+    &__search{
+        text-align: center;
+        font-size: 0;
+        padding: 70px 0 0;
+        display: flex;
+        justify-content: center;
+ 
+        input[type='text'], input[type='email']{
+            width: 480px;
+            max-width: 100%;
+            padding: 22px 0 22px 20px;
+            border: 2px solid #F6F7F8;
+            font-weight: 600;
+            color: #262626;
+            font: inherit;
+            border-radius: 4px 0 0 4px;
+            display: inline-block;
+            font-size: 17px;
+            height: 60px;
+        }
+        label{
+            display: none;
+        }
+    }
+
+    &__btn{
+        background: #2E90E5;
+        padding: 16px 43px 16px 20px;
+        border-radius: 0 4px 4px 0;
+        color: #fff;
+        width: 120px;
+        max-width: 100%;
+        display: inline-block;
+        font-size: 17px;
+        height: 60px;
+        border: 2px solid #2E90E5;
+
+        &:hover{
+            background: #fff;
+            color: #2E90E5;
+        }
+    }
+}

@@ -1,0 +1,130 @@
+.header {
+  width: 100%;
+  font-weight: 600;
+}
+
+.header .wrapper {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.header__mobile--logo {
+  display: none;
+  position: relative;
+}
+
+.header__mobile--cart {
+  display: none;
+  position: relative;
+}
+
+.header__mobile--cart a {
+  color: #2e90e5;
+}
+
+.header__mobile--cart span {
+  background-color: #2e90e5;
+}
+
+.header__mobile--cart--badge {
+  font-size: 11px;
+  position: absolute;
+  top: -7px;
+  color: #fff;
+  background: #000;
+  border-radius: 50%;
+  padding: 0 5px;
+  right: -11px;
+  line-height: 15px;
+  height: 16px;
+  opacity: 1 !important;
+  display: none;
+}
+
+.header__top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px 0 20px 0;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header__top--right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.header__top--account__container {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  cursor: pointer;
+  width: 130px;
+  top: -8px;
+  padding: 0 10px;
+  text-align: right;
+}
+
+.header__top span {
+  margin: 10px;
+}
+
+.header__top--user-profile {
+  padding: 0 !important;
+  font-weight: bold;
+  width: 130px;
+  text-align: right;
+  position: relative;
+}
+
+.header__top div {
+  padding: 10px;
+}
+
+.header__top--cart a.active {
+  color: #33a0ff;
+}
+
+.header__top--cart a:hover span {
+  color: #939191;
+}
+
+.header__top--cart span {
+  color: #575757;
+}
+
+.header--brand {
+  margin: 0 auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-bottom: 61px;
+}
+
+.header--brand h1 {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.header--brand span {
+  color: #fd2e2e;
+}
+/*# sourceMappingURL=header.css.map */

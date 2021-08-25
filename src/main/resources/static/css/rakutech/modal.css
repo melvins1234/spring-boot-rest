@@ -1,0 +1,235 @@
+@media screen and (max-height: 530px) {
+  .modal {
+    -webkit-box-align: unset !important;
+        -ms-flex-align: unset !important;
+            align-items: unset !important;
+  }
+}
+
+.modal {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 99999;
+  overflow-y: auto;
+  padding: 25px 20px;
+}
+
+.modal__box {
+  position: relative;
+  width: 960px;
+  max-width: 100%;
+  height: 480px;
+  background: #fff;
+  border-radius: 6px;
+}
+
+.modal__close {
+  font-size: 30px;
+  width: 47px;
+  height: 47px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  background: #22262A;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 50%;
+  top: -20px;
+  right: -20px;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.modal__close i {
+  color: #fff;
+}
+
+.modal__content {
+  text-align: center;
+  width: 58%;
+  max-width: 100%;
+  z-index: 1;
+  position: relative;
+  background: white;
+  height: 100%;
+}
+
+.modal__content--inner {
+  padding: 63px 77px;
+}
+
+.modal__title {
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 58px;
+  margin-bottom: 34px;
+}
+
+.modal__description {
+  font-size: 18px;
+  line-height: 28px;
+  margin-bottom: 67px;
+}
+
+.modal__sub {
+  padding: 0;
+}
+
+.modal__unsub input {
+  margin-right: 15px;
+}
+
+.modal__checkbox {
+  display: none;
+}
+
+.modal__label {
+  background: url("../images/check.png");
+}
+
+.modal__checkbox + .modal__label {
+  padding-left: 40px;
+  height: 24px;
+  display: inline-block;
+  line-height: 24px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.modal__checkbox:checked + .modal__label {
+  background-position: 0 -24px;
+}
+
+.modal__img {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.successful-registered {
+  display: none;
+  -webkit-transition: opacity .15s linear;
+  transition: opacity .15s linear;
+  z-index: 4;
+  background: transparent;
+  -webkit-box-align: center !important;
+      -ms-flex-align: center !important;
+          align-items: center !important;
+}
+
+.successful-registered:not(.successful-registered--show) {
+  opacity: 0;
+}
+
+.successful-registered--show .successful-registered__box {
+  -webkit-transform: none;
+          transform: none;
+}
+
+.successful-registered__box {
+  width: 325px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  max-width: 100%;
+  position: relative;
+  transition: transform .3s ease-out,-webkit-transform .3s ease-out;
+  -webkit-transform: translate(0, -115px);
+          transform: translate(0, -115px);
+}
+
+.successful-registered__title {
+  margin-top: 30px;
+}
+
+.successful-registered__icon {
+  font-size: 58px;
+  position: absolute;
+  border-radius: 50%;
+  z-index: 9;
+  background: #FD2E2E;
+  padding: 15px;
+  width: 95px;
+  height: 95px;
+  top: -57px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.successful-registered__icon i {
+  color: #fff;
+  top: 5px;
+  position: relative;
+}
+
+.successful-registered__footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  border: none;
+  text-align: center;
+}
+
+.successful-registered__success {
+  display: block;
+  width: 100%;
+  background: #FD2E2E;
+  border: 0;
+  color: #fff;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 30px;
+  border-radius: 5px;
+}
+
+.successful-registered__success:hover {
+  background: #C11717;
+}
+
+.successful-registered__backdrop {
+  z-index: 3;
+  background: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  visibility: hidden;
+}
+
+.successful-registered__backdrop--fade {
+  opacity: 0;
+}
+
+.successful-registered__backdrop--show {
+  opacity: 0.5;
+  visibility: visible;
+}
+/*# sourceMappingURL=modal.css.map */

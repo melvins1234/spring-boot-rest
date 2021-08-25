@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AACE,MAAM,EAAE,SAAS,EAAE,KAAK;EAMrB,AAAD,cAAO,CAAC;IACN,UAAU,EAAE,GAAG;IACf,aAAa,EAAE,IAAI;GACpB",
+    "sources": [
+        "BottomMedia.scss"
+    ],
+    "names": [],
+    "file": "BottomMedia.css"
+}

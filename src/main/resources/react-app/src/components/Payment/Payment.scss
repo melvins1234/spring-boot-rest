@@ -1,0 +1,17 @@
+.checkout__customer{
+    display: flex;
+    &--information{
+        flex: 1 1 100%;
+    }
+    &--order-sumary{
+        .bottom4{
+            &__news{
+                &__box{
+                    img{
+                        width: 50px;
+                    }
+                }
+            }
+        }
+    }
+}

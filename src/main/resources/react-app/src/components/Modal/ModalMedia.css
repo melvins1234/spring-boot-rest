@@ -1,0 +1,42 @@
+@media (max-width: 960px) {
+  .modal__title {
+    font-size: 38px;
+    margin-bottom: 15px;
+  }
+  .modal__description {
+    font-size: 15px;
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .modal__box {
+    height: auto;
+  }
+  .modal__img {
+    display: none;
+  }
+  .modal__content {
+    display: block;
+    width: 100%;
+    padding: 20px;
+  }
+  .modal__content--inner {
+    padding: 0;
+    margin-bottom: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal__sub {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .modal__sub * {
+    width: 100%;
+    padding: 20px;
+  }
+}
+/*# sourceMappingURL=ModalMedia.css.map */

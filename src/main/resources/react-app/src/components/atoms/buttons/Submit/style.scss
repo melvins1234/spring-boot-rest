@@ -1,0 +1,23 @@
+.product__submit {
+  width: 90px;
+  background: #dc3545;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dc3545;
+  color: #fff;
+  padding: 10px 5px;
+  cursor: pointer;
+  &:hover{
+    background: #b4303d;
+  }
+}
+
+.cancel-btn  {
+  background-color: #fff;
+  color: #dc3545;
+  &:hover{
+    background: #f7f3f3;
+  }
+}

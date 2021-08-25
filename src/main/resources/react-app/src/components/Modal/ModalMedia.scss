@@ -1,0 +1,81 @@
+@mixin for-desktop {
+    @media (max-width: 1280px) {
+      @content;
+    }
+  }
+  
+  @mixin for-tablet-landscape-desktop {
+    @media (max-width: 1024px) {
+      @content;
+    }
+  }
+  
+  @mixin for-Ipad {
+    @media (max-width: 960px) {
+      @content;
+    }
+  }
+  
+  @mixin for-tablet-portrait-up {
+    @media (max-width: 640px) {
+      @content;
+    }
+  }
+  
+  @mixin for-tablet-small {
+    @media (max-width: 480px) {
+      @content;
+    }
+  }
+  
+  @mixin for-phone-ony {
+    @media (max-width: 320px) {
+      @content;
+    }
+  }
+  
+  .modal {
+    @include for-Ipad() {
+      &__title {
+        font-size: 38px;
+        margin-bottom: 15px;
+      }
+  
+      &__description {
+        font-size: 15px;
+        margin-bottom: 40px;
+      }
+    }
+  
+    @include for-tablet-portrait-up() {
+      &__box {
+        height: auto;
+      }
+  
+      &__img {
+        display: none;
+      }
+  
+      &__content {
+        display: block;
+        width: 100%;
+        padding: 20px;
+  
+        &--inner {
+          padding: 0;
+          margin-bottom: 25px;
+        }
+      }
+    }
+  
+    @include for-tablet-small() {
+      &__sub {
+        flex-direction: column;
+  
+        * {
+          width: 100%;
+          padding: 20px;
+        }
+      }
+    }
+  }

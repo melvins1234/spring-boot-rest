@@ -1,0 +1,13 @@
+@mixin for-tablet-small {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+.bottom1 {
+  @include for-tablet-small() {
+    &__menu {
+      flex-basis: 25%;
+      margin-bottom: 15px;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+.bottom3 {
+  position: relative;
+  z-index: 1;
+  background: white;
+  padding: 90px 0 70px;
+}
+
+.bottom3__box {
+  text-align: center;
+  margin: 0 35px 30px;
+}
+
+.bottom3__title {
+  font-weight: 600;
+  line-height: 43px;
+  font-size: 24px;
+  text-transform: uppercase;
+  margin-bottom: 35px;
+}
+
+.bottom3__icon {
+  display: block;
+  text-align: center;
+  margin: 0 auto 30px;
+}
+
+.bottom3__content {
+  line-height: 24px;
+}
+/*# sourceMappingURL=Bottom3.css.map */

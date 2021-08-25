@@ -1,0 +1,64 @@
+
+.banner {
+  @media screen and (max-width: 1250px) {
+    &__icon {
+      &--left {
+        left: 10px;
+      }
+
+      &--right {
+        right: 10px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 991px) {
+    margin-top: 110px;
+
+    &__image {
+      right: 10px;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    &__wrapper {
+      &--flex {
+        height: 510px;
+        padding: 0 20px;
+      }
+    }
+
+    &__content {
+      padding-top: 125px;
+    }
+
+    &__icon {
+      top: 41%;
+    }
+
+    &__image {
+      width: 560px;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    &__wrapper {
+      &--flex {
+        height: auto;
+      }
+    }
+
+    &__image {
+      display: block;
+      position: relative;
+    }
+
+    &__content {
+      padding-top: 70px;
+      max-width: 100%;
+      display: block;
+      margin: 0 auto;
+      text-align: center;
+    }
+  }
+}

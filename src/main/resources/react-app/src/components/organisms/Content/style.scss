@@ -1,0 +1,14 @@
+.product__main{
+    width: calc(100% - 390px);
+    padding: 10px;
+    h3{
+        font: normal normal bold 24px/22px Rajdhani;
+    }
+
+    &--header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+}

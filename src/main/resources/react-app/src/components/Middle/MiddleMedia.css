@@ -1,0 +1,46 @@
+@media (max-width: 1024px) {
+  .middle__image--gopro {
+    top: 89px;
+    right: -65px;
+  }
+}
+
+@media (max-width: 960px) {
+  .middle__image--phone {
+    top: 0;
+  }
+  .middle__image--vr {
+    width: 260px;
+  }
+  .middle__image--gopro {
+    top: 23px;
+    right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .middle__image--gopro {
+    right: -73px;
+  }
+}
+
+@media (max-width: 960px) {
+  .middle__content {
+    margin: 20px 0;
+  }
+}
+
+@media (max-width: 960px) {
+  .middle__wrapper--flex {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    height: auto;
+  }
+}
+
+@media (max-width: 779px) {
+  .middle__article {
+    min-height: 220px;
+  }
+}
+/*# sourceMappingURL=MiddleMedia.css.map */
